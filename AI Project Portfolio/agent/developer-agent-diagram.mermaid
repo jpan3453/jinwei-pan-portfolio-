@@ -1,0 +1,146 @@
+flowchart TD
+    START([User Selects Developer Agent]) --> AUTH_CHECK{User Authenticated?}
+    AUTH_CHECK -->|No| LOGIN[🔐 Login Required<br/>Redirect to authentication]
+    AUTH_CHECK -->|Yes| DEV_MENU[Developer Main Menu<br/>🔍 Land Search & Acquisition<br/>📈 Market Analysis<br/>💰 Investment Calculations<br/>📊 Feasibility Study]
+    
+    LOGIN --> DEV_MENU
+    
+    DEV_MENU --> DEV_CHOICE{Select Action}
+    
+    DEV_CHOICE --> LAND_SEARCH[🔍 Land Search & Acquisition]
+    DEV_CHOICE --> MARKET_ANALYSIS[📈 Market Analysis]
+    DEV_CHOICE --> INVESTMENT_CALC[💰 Investment Calculations]
+    DEV_CHOICE --> FEASIBILITY[📊 Feasibility Study]
+    
+    %% Land Search Flow
+    LAND_SEARCH --> SEARCH_CRITERIA[Set Search Criteria<br/>🎯 Target preferences<br/>📍 Location parameters<br/>💰 Budget constraints<br/>📏 Size requirements]
+    SEARCH_CRITERIA --> LOCATION_INPUT[Enter Location Preferences<br/>🏙️ City/State/ZIP<br/>🚗 Commute distance<br/>🏫 School districts<br/>🛒 Shopping access<br/>🚌 Public transport]
+    LOCATION_INPUT --> BUDGET_RANGE[Set Budget Range<br/>💰 Minimum: $100K<br/>💰 Maximum: $500K<br/>💳 Financing options<br/>📊 Market comparison]
+    BUDGET_RANGE --> SIZE_REQS[Size Requirements<br/>📏 Minimum lot size<br/>📐 Maximum lot size<br/>🏠 Buildable area<br/>📋 Utility access<br/>🚗 Parking requirements]
+    SIZE_REQS --> ZONING_PREFS[Zoning Preferences<br/>🏠 Residential types<br/>🏢 Commercial allowed<br/>🏭 Mixed-use options<br/>📜 Special permits<br/>🌳 Environmental restrictions]
+    
+    ZONING_PREFS --> API_SEARCH[🔍 Search Real Estate APIs<br/>📊 Multi-source aggregation<br/>🔄 Real-time updates<br/>✅ Data validation<br/>🏷️ Property categorization]
+    API_SEARCH --> ZILLOW_API[Query Zillow API<br/>🏠 MLS listings<br/>📈 Price history<br/>🏷️ Property details<br/>📍 Location data<br/>📊 Market trends]
+    API_SEARCH --> REDFIN_API[Query Redfin API<br/>🏠 Active listings<br/>💰 Pricing data<br/>📸 Property photos<br/>📋 Property reports<br/>🕒 Days on market]
+    API_SEARCH --> MLS_DATA[Query MLS Data<br/>🏠 Professional listings<br/>✅ Verified information<br/>📋 Detailed specs<br/>🏷️ Agent contacts<br/>📊 Comprehensive data]
+    
+    ZILLOW_API --> AGGREGATE_RESULTS[📊 Aggregate Search Results<br/>🔗 Merge duplicate listings<br/>✅ Validate data accuracy<br/>📈 Calculate averages<br/>🏷️ Standardize formats<br/>⭐ Score properties]
+    REDFIN_API --> AGGREGATE_RESULTS
+    MLS_DATA --> AGGREGATE_RESULTS
+    
+    AGGREGATE_RESULTS --> FILTER_RESULTS[🔍 Apply Filters<br/>💰 Price range filtering<br/>📏 Size constraints<br/>🏷️ Property type<br/>📅 Date listed<br/>⭐ Quality score]
+    FILTER_RESULTS --> MAP_VIEW[🗺️ Display on Map<br/>📍 Interactive markers<br/>🎨 Color-coded pricing<br/>🔍 Zoom controls<br/>📱 Mobile responsive<br/>📊 Cluster view]
+    MAP_VIEW --> PROPERTY_LIST[📋 Show Property List<br/>📊 Sortable columns<br/>🔍 Search functionality<br/>⭐ Favorite marking<br/>📱 Mobile cards<br/>📄 Pagination]
+    
+    PROPERTY_LIST --> PROP_ACTIONS{Property Actions}
+    PROP_ACTIONS --> VIEW_DETAILS[👁️ View Property Details<br/>📸 Photo gallery<br/>📋 Specifications<br/>📍 Location info<br/>💰 Financial details<br/>📊 Market analysis]
+    PROP_ACTIONS --> SAVE_FAVORITE[⭐ Save to Favorites<br/>📝 Add personal notes<br/>🏷️ Custom tags<br/>📅 Follow-up reminders<br/>🔔 Price alerts]
+    PROP_ACTIONS --> SCHEDULE_VISIT[📅 Schedule Visit<br/>🕒 Available time slots<br/>👤 Agent contact<br/>📋 Visit checklist<br/>📱 Calendar integration]
+    PROP_ACTIONS --> RUN_ANALYSIS[📊 Run Property Analysis<br/>💰 Valuation estimate<br/>📈 Investment potential<br/>🏠 Comparable properties<br/>📊 Market trends<br/>⚠️ Risk assessment]
+    
+    %% Market Analysis Flow
+    MARKET_ANALYSIS --> MARKET_SETUP[📈 Market Analysis Setup<br/>🎯 Analysis objectives<br/>📊 Data sources<br/>📅 Time parameters<br/>🏷️ Property types]
+    MARKET_SETUP --> TARGET_AREA[🎯 Select Target Area<br/>🏙️ City boundaries<br/>🗺️ Neighborhood zones<br/>📍 Custom polygons<br/>📏 Radius selection<br/>🏷️ Area demographics]
+    TARGET_AREA --> TIME_RANGE[📅 Set Time Range<br/>📅 Last 6 months<br/>📅 Last 1 year<br/>📅 Last 3 years<br/>📅 Custom range<br/>📊 Seasonal analysis]
+    TIME_RANGE --> PROPERTY_TYPE[🏠 Select Property Types<br/>🏠 Single family<br/>🏢 Multi-family<br/>🏬 Commercial<br/>🏭 Industrial<br/>🏞️ Land/lots]
+    
+    PROPERTY_TYPE --> COLLECT_DATA[📊 Collect Market Data<br/>💰 Sales data<br/>📋 Listing data<br/>📈 Price trends<br/>📊 Volume metrics<br/>🕒 Time on market]
+    COLLECT_DATA --> PRICE_TRENDS[📈 Analyze Price Trends<br/>📊 Moving averages<br/>📈 Growth rates<br/>📉 Volatility analysis<br/>🔮 Trend forecasting<br/>📊 Seasonal patterns]
+    COLLECT_DATA --> INVENTORY_LEVELS[📦 Check Inventory Levels<br/>📊 Available units<br/>📅 New listings<br/>🏠 Sold properties<br/>⏱️ Absorption rates<br/>📈 Supply trends]
+    COLLECT_DATA --> DEMOGRAPHIC_DATA[👥 Gather Demographics<br/>👨‍👩‍👧‍👦 Population data<br/>💰 Income levels<br/>📚 Education stats<br/>👥 Age distribution<br/>🏠 Housing needs]
+    
+    PRICE_TRENDS --> GENERATE_CHARTS[📊 Generate Trend Charts<br/>📈 Line charts<br/>📊 Bar graphs<br/>🥧 Pie charts<br/>📉 Candlestick charts<br/>🗺️ Heat maps]
+    INVENTORY_LEVELS --> SUPPLY_DEMAND[⚖️ Supply/Demand Analysis<br/>📊 Market balance<br/>⏱️ Days on market<br/>💰 Price elasticity<br/>📈 Market velocity<br/>🔮 Future outlook]
+    DEMOGRAPHIC_DATA --> POPULATION_ANALYSIS[👥 Population Growth Analysis<br/>📈 Growth trends<br/>👶 Age demographics<br/>💰 Income trends<br/>🏠 Housing demand<br/>🔮 Future projections]
+    
+    GENERATE_CHARTS --> MARKET_REPORT[📄 Generate Market Report<br/>📊 Executive summary<br/>📈 Key findings<br/>💡 Recommendations<br/>📊 Supporting charts<br/>🔮 Market outlook]
+    SUPPLY_DEMAND --> MARKET_REPORT
+    POPULATION_ANALYSIS --> MARKET_REPORT
+    
+    %% Investment Calculations Flow
+    INVESTMENT_CALC --> INVESTMENT_SETUP[💰 Investment Setup<br/>🎯 Investment goals<br/>📊 Risk tolerance<br/>⏱️ Time horizon<br/>💰 Available capital<br/>📈 Expected returns]
+    INVESTMENT_SETUP --> ACQUISITION_COST[💰 Enter Acquisition Cost<br/>🏠 Purchase price<br/>🏛️ Closing costs<br/>📋 Due diligence<br/>🔍 Inspection fees<br/>💰 Down payment]
+    ACQUISITION_COST --> DEVELOPMENT_COST[🏗️ Estimate Development Cost<br/>🏠 Construction costs<br/>📋 Permit fees<br/>🛠️ Site preparation<br/>⚡ Utilities<br/>🌳 Landscaping]
+    DEVELOPMENT_COST --> FINANCING_TERMS[🏦 Set Financing Terms<br/>💰 Loan amount<br/>📊 Interest rate<br/>⏱️ Loan term<br/>💳 Down payment<br/>📋 Loan conditions]
+    FINANCING_TERMS --> REVENUE_PROJ[📈 Revenue Projections<br/>🏠 Rental income<br/>💰 Sale proceeds<br/>📈 Appreciation<br/>🏷️ Tax benefits<br/>💡 Value-add opportunities]
+    
+    REVENUE_PROJ --> RENTAL_INCOME[🏠 Calculate Rental Income<br/>💰 Monthly rent<br/>📊 Occupancy rate<br/>📈 Rent escalation<br/>💸 Operating expenses<br/>📊 Net operating income]
+    REVENUE_PROJ --> SALE_PRICE[💰 Estimate Sale Price<br/>📈 Exit strategy<br/>⏱️ Holding period<br/>📊 Appreciation rate<br/>💸 Sales costs<br/>💰 Net proceeds]
+    REVENUE_PROJ --> APPRECIATION[📈 Property Appreciation<br/>📊 Historical trends<br/>🏙️ Market factors<br/>🏗️ Development impact<br/>📈 Compound growth<br/>🔮 Future outlook]
+    
+    RENTAL_INCOME --> ROI_CALC[📊 Calculate ROI<br/>💰 Total return<br/>📊 Annual return<br/>💸 Cash-on-cash<br/>📈 Total ROI<br/>⚖️ Risk-adjusted return]
+    SALE_PRICE --> ROI_CALC
+    APPRECIATION --> ROI_CALC
+    
+    ROI_CALC --> CASH_FLOW[💰 Cash Flow Analysis<br/>💸 Monthly cash flow<br/>📊 Annual cash flow<br/>📈 Cumulative flow<br/>⚠️ Negative periods<br/>💰 Break-even point]
+    CASH_FLOW --> IRR_CALC[📈 Calculate IRR<br/>💰 Internal rate of return<br/>📊 NPV analysis<br/>⏱️ Payback period<br/>📈 MIRR calculation<br/>⚖️ Risk assessment]
+    IRR_CALC --> RISK_ANALYSIS[⚠️ Risk Assessment<br/>📊 Market risk<br/>🏗️ Construction risk<br/>💰 Financial risk<br/>🏛️ Regulatory risk<br/>🌪️ Environmental risk]
+    RISK_ANALYSIS --> INVESTMENT_REPORT[📄 Investment Report<br/>📊 Executive summary<br/>💰 Financial projections<br/>⚠️ Risk analysis<br/>💡 Recommendations<br/>📈 Sensitivity analysis]
+    
+    %% Feasibility Study Flow
+    FEASIBILITY --> FEASIBILITY_SETUP[📊 Feasibility Study Setup<br/>🎯 Project objectives<br/>📋 Study scope<br/>⏱️ Timeline<br/>💰 Budget<br/>👥 Stakeholders]
+    FEASIBILITY_SETUP --> PROJECT_SCOPE[📋 Define Project Scope<br/>🏠 Project type<br/>📏 Project size<br/>🎯 Target market<br/>📊 Success criteria<br/>⏱️ Key milestones]
+    PROJECT_SCOPE --> SITE_ANALYSIS[🔍 Site Analysis<br/>🏞️ Physical conditions<br/>🌍 Environmental factors<br/>🚗 Access & utilities<br/>🏛️ Zoning compliance<br/>🏘️ Neighborhood impact]
+    SITE_ANALYSIS --> REGULATORY_CHECK[📜 Regulatory Requirements<br/>🏛️ Zoning laws<br/>📋 Building codes<br/>🌍 Environmental regs<br/>🚗 Traffic impact<br/>📋 Permit requirements]
+    REGULATORY_CHECK --> COST_BENEFIT[⚖️ Cost-Benefit Analysis<br/>💰 Total project costs<br/>📈 Expected benefits<br/>📊 NPV calculation<br/>⚖️ Benefit-cost ratio<br/>⚠️ Sensitivity analysis]
+    
+    COST_BENEFIT --> TIMELINE_ANALYSIS[⏱️ Timeline Analysis<br/>📅 Project phases<br/>🏗️ Construction timeline<br/>📋 Permit timeline<br/>💰 Cash flow timing<br/>⚠️ Critical path]
+    TIMELINE_ANALYSIS --> RISK_FACTORS[⚠️ Identify Risk Factors<br/>🌪️ Market risks<br/>🏗️ Construction risks<br/>💰 Financial risks<br/>🏛️ Regulatory risks<br/>🌍 Environmental risks]
+    RISK_FACTORS --> MITIGATION_PLANS[🛡️ Mitigation Strategies<br/>📋 Risk response plans<br/>🔄 Contingency plans<br/>📊 Risk monitoring<br/>💰 Reserve funds<br/>🤝 Insurance coverage]
+    MITIGATION_PLANS --> FEASIBILITY_REPORT[📄 Feasibility Report<br/>📊 Executive summary<br/>💡 Recommendations<br/>📈 Financial analysis<br/>⚠️ Risk assessment<br/>📅 Implementation plan]
+    
+    %% Data Synchronization
+    RUN_ANALYSIS --> SYNC_TO_BUILDER[📤 Sync to Builder Agent<br/>💰 Budget parameters<br/>📏 Size requirements<br/>🏠 Property specifications<br/>📊 Market constraints<br/>⏱️ Timeline expectations]
+    MARKET_REPORT --> SYNC_TO_BUILDER
+    INVESTMENT_REPORT --> SYNC_TO_BUILDER
+    FEASIBILITY_REPORT --> SYNC_TO_BUILDER
+    
+    SYNC_TO_BUILDER --> UPDATE_COSTS[🔄 Update Cost Estimates<br/>💰 Material cost adjustments<br/>👷 Labor rate updates<br/>📊 Market pricing<br/>📈 Inflation factors<br/>🏗️ Method optimization]
+    SYNC_TO_BUILDER --> UPDATE_TIMELINE[🔄 Update Project Timeline<br/>📅 Construction schedule<br/>📋 Permit timeline<br/>🏗️ Phase planning<br/>⚠️ Risk buffers<br/>🎯 Milestone dates]
+    SYNC_TO_BUILDER --> UPDATE_MATERIALS[🔄 Update Material Requirements<br/>🏗️ Site conditions impact<br/>🌍 Local availability<br/>💰 Cost optimization<br/>📊 Quality standards<br/>🚚 Logistics planning]
+    
+    %% Additional Analysis Features
+    VIEW_DETAILS --> COMP_ANALYSIS[📊 Comparable Analysis<br/>🏠 Similar properties<br/>💰 Price comparison<br/>📊 Feature analysis<br/>📈 Market position<br/>⭐ Value scoring]
+    COMP_ANALYSIS --> VALUATION[💰 Property Valuation<br/>📊 CMA analysis<br/>💰 Appraisal estimate<br/>📈 Market value<br/>🏗️ As-is vs improved<br/>📊 Confidence interval]
+    
+    SAVE_FAVORITE --> PORTFOLIO[📂 Property Portfolio<br/>⭐ Saved properties<br/>📊 Comparison tools<br/>📈 Performance tracking<br/>🔔 Alert settings<br/>📄 Report generation]
+    PORTFOLIO --> PORTFOLIO_ANALYSIS[📊 Portfolio Analysis<br/>📈 Performance metrics<br/>⚖️ Risk distribution<br/>💰 Return analysis<br/>📊 Correlation analysis<br/>🎯 Optimization suggestions]
+    
+    %% Integration Points
+    UPDATE_COSTS --> ARCHITECTURE_SYNC[📤 Sync to Architecture<br/>💰 Budget constraints<br/>📏 Size limitations<br/>🏠 Design parameters<br/>🎨 Style preferences<br/>📊 Market demands]
+    UPDATE_TIMELINE --> CONSTRUCTION_SYNC[📤 Sync to Construction<br/>📅 Schedule constraints<br/>🏗️ Method selection<br/>⚠️ Risk factors<br/>📊 Resource planning<br/>🎯 Quality targets]
+    UPDATE_MATERIALS --> ZONING_SYNC[📤 Sync to Zoning<br/>📋 Compliance requirements<br/>🏛️ Permit considerations<br/>🌍 Environmental factors<br/>📜 Legal constraints<br/>🏘️ Community impact]
+    
+    %% Completion and Return
+    ARCHITECTURE_SYNC --> COMPLETE[✅ Sync Complete<br/>All agents updated<br/>📊 Data consistency<br/>🔄 Real-time sync<br/>📝 Activity logged]
+    CONSTRUCTION_SYNC --> COMPLETE
+    ZONING_SYNC --> COMPLETE
+    COMPLETE --> DEV_MENU
+    
+    %% Return paths
+    VALUATION --> DEV_MENU
+    PORTFOLIO_ANALYSIS --> DEV_MENU
+    COMP_ANALYSIS --> DEV_MENU
+    
+    %% Error Handling
+    API_SEARCH --> API_ERROR{API Error?}
+    API_ERROR -->|Yes| ERROR_HANDLER[❌ Error Handler<br/>🔄 Retry logic<br/>📝 Error logging<br/>🚨 User notification<br/>📞 Support escalation]
+    API_ERROR -->|No| AGGREGATE_RESULTS
+    ERROR_HANDLER --> DEV_MENU
+    
+    %% Styling
+    classDef startEnd fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef error fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+    classDef success fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef sync fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+    classDef analysis fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+    
+    class START,COMPLETE startEnd
+    class SEARCH_CRITERIA,MARKET_SETUP,INVESTMENT_SETUP,FEASIBILITY_SETUP process
+    class AUTH_CHECK,DEV_CHOICE,PROP_ACTIONS decision
+    class ERROR_HANDLER error
+    class UPDATE_COSTS,UPDATE_TIMELINE,UPDATE_MATERIALS success
+    class SYNC_TO_BUILDER,ARCHITECTURE_SYNC,CONSTRUCTION_SYNC,ZONING_SYNC sync
+    class MARKET_REPORT,INVESTMENT_REPORT,FEASIBILITY_REPORT,COMP_ANALYSIS analysis

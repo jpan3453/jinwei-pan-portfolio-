@@ -1,0 +1,160 @@
+flowchart TD
+    START([User Selects Builder Agent]) --> AUTH_CHECK{User Authenticated?}
+    AUTH_CHECK -->|No| LOGIN[🔐 Login Required<br/>Redirect to authentication]
+    AUTH_CHECK -->|Yes| BUILDER_MENU[Builder Main Menu<br/>🏗️ Project Planning<br/>💰 Cost Estimation<br/>📋 Material Management<br/>👷 Resource Planning<br/>📊 Progress Tracking<br/>🔗 Agent Sync]
+    
+    LOGIN --> BUILDER_MENU
+    
+    BUILDER_MENU --> BUILDER_CHOICE{Select Action}
+    
+    BUILDER_CHOICE --> PROJECT_PLANNING[🏗️ Project Planning]
+    BUILDER_CHOICE --> COST_ESTIMATION[💰 Cost Estimation]
+    BUILDER_CHOICE --> MATERIAL_MGMT[📋 Material Management]
+    BUILDER_CHOICE --> RESOURCE_PLANNING[👷 Resource Planning]
+    BUILDER_CHOICE --> PROGRESS_TRACKING[📊 Progress Tracking]
+    BUILDER_CHOICE --> AGENT_SYNC[🔗 Agent Synchronization]
+    
+    %% Project Planning Flow
+    PROJECT_PLANNING --> IMPORT_DATA[📥 Import Project Data<br/>🏠 Property specifications<br/>💰 Budget constraints<br/>📅 Timeline requirements<br/>🎨 Design preferences<br/>📊 Market analysis data]
+    IMPORT_DATA --> PROJECT_TYPE[🏠 Select Project Type<br/>🏡 Single Family Home<br/>🏢 Multi-Family Complex<br/>🏬 Commercial Building<br/>🏭 Industrial Facility<br/>🏞️ Custom Development]
+    PROJECT_TYPE --> CONSTRUCTION_METHOD[🏗️ Choose Construction Method<br/>🧱 Traditional Stick Built<br/>🏭 Modular Construction<br/>🏗️ Steel Frame<br/>🧱 Masonry<br/>💚 Green Building<br/>🔧 Hybrid Methods]
+    
+    CONSTRUCTION_METHOD --> SITE_PREP[🏞️ Site Preparation Planning<br/>🌳 Clearing & grading<br/>🚰 Utility connections<br/>🛣️ Access roads<br/>💧 Drainage systems<br/>🌍 Environmental compliance<br/>📋 Permit requirements]
+    SITE_PREP --> FOUNDATION_PLAN[🏗️ Foundation Planning<br/>🧱 Foundation type selection<br/>📏 Excavation requirements<br/>💧 Waterproofing systems<br/>🌡️ Insulation planning<br/>⚡ Utility rough-ins<br/>📊 Structural analysis]
+    FOUNDATION_PLAN --> FRAMING_PLAN[🏠 Framing & Structure<br/>🪵 Lumber specifications<br/>🔩 Hardware requirements<br/>📐 Engineering calculations<br/>🏗️ Load bearing analysis<br/>🔧 Assembly sequence<br/>📋 Code compliance]
+    FRAMING_PLAN --> SYSTEMS_PLAN[⚡ Building Systems<br/>⚡ Electrical systems<br/>🚰 Plumbing systems<br/>❄️ HVAC systems<br/>🔥 Fire safety systems<br/>💻 Smart home integration<br/>🌿 Energy efficiency]
+    
+    SYSTEMS_PLAN --> FINISH_PLAN[🎨 Finish Planning<br/>🎨 Interior finishes<br/>🏠 Exterior finishes<br/>🚪 Doors & windows<br/>💡 Lighting fixtures<br/>🏠 Flooring materials<br/>🖼️ Paint & trim]
+    FINISH_PLAN --> QUALITY_STANDARDS[✅ Quality Standards<br/>📋 Inspection schedules<br/>🏆 Quality benchmarks<br/>📊 Testing protocols<br/>✅ Acceptance criteria<br/>📝 Documentation requirements<br/>🔄 Corrective procedures]
+    QUALITY_STANDARDS --> PROJECT_SCHEDULE[📅 Create Project Schedule<br/>📊 Critical path analysis<br/>⏱️ Phase dependencies<br/>👷 Resource allocation<br/>🌦️ Weather considerations<br/>📋 Milestone planning<br/>⚠️ Buffer time]
+    
+    %% Cost Estimation Flow
+    COST_ESTIMATION --> COST_SETUP[💰 Cost Estimation Setup<br/>📊 Estimation method<br/>🏗️ Project complexity<br/>📍 Location factors<br/>📅 Market timing<br/>💰 Contingency levels]
+    COST_SETUP --> MATERIAL_COSTS[🧱 Material Cost Analysis<br/>💰 Current market prices<br/>📊 Price forecasting<br/>🚚 Transportation costs<br/>📦 Bulk pricing<br/>🔄 Supplier negotiations<br/>📈 Price volatility]
+    COST_SETUP --> LABOR_COSTS[👷 Labor Cost Analysis<br/>💰 Local wage rates<br/>👥 Skill requirements<br/>⏱️ Productivity factors<br/>📊 Overtime considerations<br/>🏆 Quality vs cost<br/>📋 Union requirements]
+    COST_SETUP --> EQUIPMENT_COSTS[🚧 Equipment Cost Analysis<br/>🏗️ Equipment rental rates<br/>⛽ Fuel & operating costs<br/>🔧 Maintenance costs<br/>📅 Usage schedules<br/>💰 Buy vs rent analysis<br/>🚚 Transportation costs]
+    
+    MATERIAL_COSTS --> COST_DATABASE[📊 Access Cost Database<br/>💰 Historical pricing<br/>📈 Market trends<br/>🏪 Supplier networks<br/>📊 Regional variations<br/>🔄 Real-time updates<br/>📊 Competitive analysis]
+    LABOR_COSTS --> COST_DATABASE
+    EQUIPMENT_COSTS --> COST_DATABASE
+    
+    COST_DATABASE --> QUANTITY_TAKEOFF[📏 Quantity Takeoff<br/>📐 Detailed measurements<br/>🧮 Material calculations<br/>📊 Waste factors<br/>🔢 Unit conversions<br/>📋 Specification review<br/>✅ Accuracy verification]
+    QUANTITY_TAKEOFF --> COST_BREAKDOWN[💰 Detailed Cost Breakdown<br/>🧱 Material costs<br/>👷 Labor costs<br/>🚧 Equipment costs<br/>📋 Permit fees<br/>💼 Overhead costs<br/>💰 Profit margins]
+    COST_BREAKDOWN --> CONTINGENCY[⚠️ Contingency Planning<br/>📊 Risk assessment<br/>💰 Contingency percentages<br/>🌦️ Weather delays<br/>📈 Market fluctuations<br/>🔄 Change orders<br/>⚠️ Unforeseen conditions]
+    CONTINGENCY --> COST_REPORT[📄 Cost Estimation Report<br/>📊 Executive summary<br/>💰 Total project cost<br/>📈 Cost breakdown<br/>⚠️ Risk factors<br/>📅 Payment schedule<br/>💡 Cost optimization]
+    
+    %% Material Management Flow
+    MATERIAL_MGMT --> MATERIAL_SETUP[📋 Material Management Setup<br/>🏗️ Project requirements<br/>📊 Quality standards<br/>🚚 Delivery schedules<br/>📦 Storage requirements<br/>💰 Budget constraints]
+    MATERIAL_SETUP --> SPEC_REVIEW[📋 Specification Review<br/>📐 Technical specifications<br/>🏆 Quality requirements<br/>📏 Dimensional standards<br/>🌿 Environmental standards<br/>📋 Code compliance<br/>✅ Performance criteria]
+    SPEC_REVIEW --> SUPPLIER_SELECTION[🏪 Supplier Selection<br/>💰 Price comparison<br/>🏆 Quality assessment<br/>🚚 Delivery capability<br/>💼 Reliability history<br/>📋 Certification status<br/>🤝 Relationship quality]
+    SUPPLIER_SELECTION --> PROCUREMENT_PLAN[📦 Procurement Planning<br/>📅 Delivery schedules<br/>📦 Order quantities<br/>💰 Payment terms<br/>📦 Storage planning<br/>🔄 Just-in-time delivery<br/>⚠️ Backup suppliers]
+    
+    PROCUREMENT_PLAN --> INVENTORY_MGMT[📦 Inventory Management<br/>📊 Stock levels<br/>📍 Storage locations<br/>🔄 Rotation schedules<br/>📋 Quality control<br/>🚚 Receiving procedures<br/>📊 Usage tracking]
+    INVENTORY_MGMT --> DELIVERY_COORD[🚚 Delivery Coordination<br/>📅 Schedule management<br/>🚛 Logistics planning<br/>📍 Site access<br/>🏗️ Unloading equipment<br/>👷 Labor coordination<br/>📋 Inspection procedures]
+    DELIVERY_COORD --> QUALITY_CONTROL[✅ Quality Control<br/>📋 Inspection checklists<br/>🔬 Testing procedures<br/>📸 Documentation<br/>❌ Rejection procedures<br/>🔄 Replacement protocols<br/>📊 Quality metrics]
+    QUALITY_CONTROL --> MATERIAL_TRACKING[📊 Material Tracking<br/>📍 Location tracking<br/>📊 Usage monitoring<br/>💰 Cost tracking<br/>📋 Waste management<br/>🔄 Reorder triggers<br/>📈 Performance analytics]
+    
+    %% Resource Planning Flow
+    RESOURCE_PLANNING --> RESOURCE_SETUP[👷 Resource Planning Setup<br/>🏗️ Project requirements<br/>👥 Skill requirements<br/>⏱️ Timeline constraints<br/>💰 Budget limits<br/>📍 Location factors]
+    RESOURCE_SETUP --> WORKFORCE_PLAN[👷 Workforce Planning<br/>👥 Team composition<br/>🏆 Skill requirements<br/>📊 Productivity rates<br/>⏱️ Availability schedules<br/>💰 Cost optimization<br/>🏆 Quality standards]
+    WORKFORCE_PLAN --> SUBCONTRACTOR_MGMT[🤝 Subcontractor Management<br/>📋 Qualification process<br/>💰 Bid evaluation<br/>📝 Contract negotiation<br/>📊 Performance tracking<br/>🔄 Relationship management<br/>⚠️ Risk assessment]
+    SUBCONTRACTOR_MGMT --> EQUIPMENT_PLAN[🚧 Equipment Planning<br/>🏗️ Equipment requirements<br/>📅 Usage schedules<br/>💰 Cost optimization<br/>🔧 Maintenance planning<br/>🚚 Logistics coordination<br/>⚠️ Backup equipment]
+    
+    EQUIPMENT_PLAN --> SAFETY_PLANNING[🦺 Safety Planning<br/>📋 Safety protocols<br/>🏆 Training requirements<br/>🚨 Emergency procedures<br/>📊 Safety metrics<br/>📋 Compliance monitoring<br/>🔄 Continuous improvement]
+    SAFETY_PLANNING --> SCHEDULE_COORD[📅 Schedule Coordination<br/>⏱️ Task sequencing<br/>👷 Resource allocation<br/>🔄 Dependency management<br/>📊 Progress tracking<br/>⚠️ Conflict resolution<br/>🎯 Milestone management]
+    SCHEDULE_COORD --> COMMUNICATION_PLAN[📞 Communication Planning<br/>👥 Stakeholder mapping<br/>📋 Reporting schedules<br/>📱 Communication tools<br/>🚨 Escalation procedures<br/>📊 Performance dashboards<br/>🔄 Feedback loops]
+    
+    %% Progress Tracking Flow
+    PROGRESS_TRACKING --> TRACKING_SETUP[📊 Progress Tracking Setup<br/>🎯 KPI definition<br/>📊 Measurement methods<br/>⏱️ Reporting frequency<br/>👥 Stakeholder access<br/>📱 Monitoring tools]
+    TRACKING_SETUP --> DAILY_REPORTING[📅 Daily Progress Reports<br/>✅ Task completion<br/>👷 Labor hours<br/>📦 Material usage<br/>🚧 Equipment status<br/>⚠️ Issues & delays<br/>🌦️ Weather impact]
+    DAILY_REPORTING --> MILESTONE_TRACKING[🎯 Milestone Tracking<br/>📅 Schedule adherence<br/>💰 Budget performance<br/>🏆 Quality metrics<br/>⚠️ Risk indicators<br/>📊 Variance analysis<br/>🔮 Forecasting]
+    MILESTONE_TRACKING --> PERFORMANCE_ANALYSIS[📊 Performance Analysis<br/>📈 Trend analysis<br/>💰 Cost performance<br/>⏱️ Schedule performance<br/>🏆 Quality performance<br/>👷 Productivity analysis<br/>⚠️ Risk assessment]
+    
+    PERFORMANCE_ANALYSIS --> ISSUE_MANAGEMENT[⚠️ Issue Management<br/>🔍 Issue identification<br/>📊 Impact assessment<br/>💡 Solution development<br/>👥 Stakeholder communication<br/>🔄 Implementation tracking<br/>📋 Lessons learned]
+    ISSUE_MANAGEMENT --> CHANGE_CONTROL[🔄 Change Control<br/>📋 Change requests<br/>💰 Cost impact<br/>⏱️ Schedule impact<br/>✅ Approval process<br/>📊 Documentation<br/>🔄 Implementation]
+    CHANGE_CONTROL --> STATUS_DASHBOARD[📊 Status Dashboard<br/>📈 Real-time metrics<br/>🎯 Goal tracking<br/>⚠️ Alert system<br/>📊 Visual reports<br/>📱 Mobile access<br/>🔄 Automated updates]
+    STATUS_DASHBOARD --> REPORTING[📄 Progress Reporting<br/>📊 Executive summaries<br/>📈 Detailed analytics<br/>📸 Photo documentation<br/>💰 Financial reports<br/>⏱️ Schedule updates<br/>🔮 Forecasts]
+    
+    %% Agent Synchronization Flow
+    AGENT_SYNC --> SYNC_SETUP[🔗 Synchronization Setup<br/>📊 Data mapping<br/>🔄 Update frequency<br/>⚠️ Conflict resolution<br/>📋 Sync protocols<br/>🔐 Security settings]
+    SYNC_SETUP --> DEV_SYNC[📤 Developer Agent Sync<br/>💰 Budget updates<br/>📊 Market changes<br/>📅 Timeline adjustments<br/>🏠 Property updates<br/>📈 ROI implications]
+    SYNC_SETUP --> ARCH_SYNC[📤 Architecture Agent Sync<br/>🎨 Design changes<br/>📐 Specification updates<br/>💰 Cost implications<br/>⏱️ Timeline impact<br/>🏗️ Constructability review]
+    SYNC_SETUP --> CONST_SYNC[📤 Construction Agent Sync<br/>🏗️ Method selection<br/>👷 Resource requirements<br/>📅 Schedule coordination<br/>🔧 Equipment needs<br/>📋 Quality standards]
+    SYNC_SETUP --> ZONING_SYNC[📤 Zoning Agent Sync<br/>📋 Permit updates<br/>🏛️ Code compliance<br/>🌍 Environmental requirements<br/>📜 Legal constraints<br/>🏘️ Community considerations]
+    
+    DEV_SYNC --> DATA_VALIDATION[✅ Data Validation<br/>🔍 Consistency checks<br/>📊 Data integrity<br/>⚠️ Conflict detection<br/>🔄 Error correction<br/>📋 Audit trails]
+    ARCH_SYNC --> DATA_VALIDATION
+    CONST_SYNC --> DATA_VALIDATION
+    ZONING_SYNC --> DATA_VALIDATION
+    
+    DATA_VALIDATION --> CONFLICT_RESOLUTION[⚠️ Conflict Resolution<br/>🔍 Conflict analysis<br/>💡 Resolution options<br/>👥 Stakeholder input<br/>✅ Decision making<br/>📋 Documentation<br/>🔄 Implementation]
+    CONFLICT_RESOLUTION --> UPDATE_PROPAGATION[🔄 Update Propagation<br/>📤 Push updates<br/>🔔 Notifications<br/>📊 Impact analysis<br/>⏱️ Timeline updates<br/>💰 Cost adjustments<br/>📋 Documentation]
+    UPDATE_PROPAGATION --> SYNC_VERIFICATION[✅ Sync Verification<br/>🔍 Data consistency<br/>📊 Update confirmation<br/>⚠️ Error detection<br/>🔄 Retry mechanisms<br/>📋 Completion status]
+    
+    %% Integration Points
+    PROJECT_SCHEDULE --> INTEGRATE_COSTS[💰 Integrate Cost Data<br/>💰 Budget alignment<br/>📊 Cost tracking<br/>💡 Optimization opportunities<br/>⚠️ Variance alerts<br/>🔮 Forecasting]
+    COST_REPORT --> INTEGRATE_SCHEDULE[📅 Update Schedule<br/>⏱️ Timeline adjustments<br/>👷 Resource reallocation<br/>💰 Budget impacts<br/>🎯 Milestone updates<br/>⚠️ Risk mitigation]
+    MATERIAL_TRACKING --> INTEGRATE_PROGRESS[📊 Update Progress<br/>📦 Material consumption<br/>⏱️ Task completion<br/>💰 Cost tracking<br/>📈 Performance metrics<br/>🔮 Forecasting]
+    COMMUNICATION_PLAN --> INTEGRATE_REPORTING[📄 Integrated Reporting<br/>📊 Consolidated data<br/>👥 Stakeholder updates<br/>📈 Performance dashboards<br/>🚨 Alert systems<br/>📋 Documentation]
+    
+    %% Advanced Features
+    COST_REPORT --> OPTIMIZATION[💡 Cost Optimization<br/>📊 Value engineering<br/>💰 Alternative materials<br/>🏗️ Method optimization<br/>👷 Productivity improvement<br/>📈 ROI enhancement]
+    REPORTING --> ANALYTICS[📊 Advanced Analytics<br/>📈 Predictive modeling<br/>🔮 Trend forecasting<br/>📊 Benchmarking<br/>💡 Optimization insights<br/>⚠️ Risk modeling]
+    SYNC_VERIFICATION --> AI_INSIGHTS[🤖 AI-Powered Insights<br/>💡 Pattern recognition<br/>🔮 Predictive analytics<br/>💰 Cost optimization<br/>⏱️ Schedule optimization<br/>⚠️ Risk prediction]
+    
+    %% Mobile and Field Features
+    DAILY_REPORTING --> MOBILE_APP[📱 Mobile Field App<br/>📸 Photo capture<br/>📋 Digital forms<br/>🗺️ GPS tracking<br/>📊 Real-time data<br/>🔄 Offline sync]
+    MOBILE_APP --> FIELD_VALIDATION[✅ Field Validation<br/>📐 Measurements<br/>✅ Quality checks<br/>📸 Documentation<br/>⚠️ Issue reporting<br/>📋 Compliance verification]
+    FIELD_VALIDATION --> AUTO_UPDATES[🔄 Automatic Updates<br/>📊 Progress updates<br/>💰 Cost tracking<br/>📅 Schedule updates<br/>🚨 Alert generation<br/>📋 Documentation]
+    
+    %% Completion Flows
+    INTEGRATE_COSTS --> PROJECT_COMPLETION[✅ Project Completion<br/>📋 Final inspections<br/>📄 Documentation<br/>💰 Final accounting<br/>🏆 Quality verification<br/>🤝 Handover process]
+    INTEGRATE_SCHEDULE --> PROJECT_COMPLETION
+    INTEGRATE_PROGRESS --> PROJECT_COMPLETION
+    INTEGRATE_REPORTING --> PROJECT_COMPLETION
+    OPTIMIZATION --> PROJECT_COMPLETION
+    ANALYTICS --> PROJECT_COMPLETION
+    AI_INSIGHTS --> PROJECT_COMPLETION
+    AUTO_UPDATES --> PROJECT_COMPLETION
+    
+    PROJECT_COMPLETION --> LESSONS_LEARNED[📚 Lessons Learned<br/>📊 Performance review<br/>💡 Best practices<br/>⚠️ Issue analysis<br/>📈 Improvement opportunities<br/>📋 Knowledge capture]
+    LESSONS_LEARNED --> ARCHIVE_PROJECT[📁 Archive Project<br/>📄 Documentation archive<br/>📊 Data backup<br/>📋 Compliance records<br/>🔍 Search indexing<br/>📚 Knowledge base update]
+    
+    %% Return Paths
+    ARCHIVE_PROJECT --> BUILDER_MENU
+    
+    %% Error Handling
+    DATA_VALIDATION --> VALIDATION_ERROR{Validation Error?}
+    VALIDATION_ERROR -->|Yes| ERROR_HANDLER[❌ Error Handler<br/>🔄 Retry mechanisms<br/>📝 Error logging<br/>🚨 User notification<br/>📞 Support escalation<br/>🔄 Fallback procedures]
+    VALIDATION_ERROR -->|No| CONFLICT_RESOLUTION
+    ERROR_HANDLER --> BUILDER_MENU
+    
+    %% Emergency Procedures
+    ISSUE_MANAGEMENT --> EMERGENCY_CHECK{Emergency Issue?}
+    EMERGENCY_CHECK -->|Yes| EMERGENCY_PROTOCOL[🚨 Emergency Protocol<br/>🚨 Immediate alerts<br/>👥 Stakeholder notification<br/>🦺 Safety procedures<br/>⏹️ Work stoppage<br/>📞 Emergency contacts]
+    EMERGENCY_CHECK -->|No| CHANGE_CONTROL
+    EMERGENCY_PROTOCOL --> EMERGENCY_RESOLUTION[🛠️ Emergency Resolution<br/>💡 Solution implementation<br/>🦺 Safety verification<br/>🔄 Work resumption<br/>📋 Incident documentation<br/>📚 Learning capture]
+    EMERGENCY_RESOLUTION --> STATUS_DASHBOARD
+    
+    %% Styling
+    classDef startEnd fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef error fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+    classDef success fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef sync fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+    classDef analysis fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+    classDef mobile fill:#e8eaf6,stroke:#283593,stroke-width:2px
+    classDef emergency fill:#fce4ec,stroke:#ad1457,stroke-width:2px
+    classDef integration fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+    
+    class START,PROJECT_COMPLETION startEnd
+    class IMPORT_DATA,COST_SETUP,MATERIAL_SETUP,RESOURCE_SETUP,TRACKING_SETUP,SYNC_SETUP process
+    class AUTH_CHECK,BUILDER_CHOICE,VALIDATION_ERROR,EMERGENCY_CHECK decision
+    class ERROR_HANDLER error
+    class ARCHIVE_PROJECT,LESSONS_LEARNED,PROJECT_COMPLETION success
+    class DEV_SYNC,ARCH_SYNC,CONST_SYNC,ZONING_SYNC,SYNC_VERIFICATION sync
+    class COST_REPORT,REPORTING,ANALYTICS,AI_INSIGHTS analysis
+    class MOBILE_APP,FIELD_VALIDATION,AUTO_UPDATES mobile
+    class EMERGENCY_PROTOCOL,EMERGENCY_RESOLUTION emergency
+    class INTEGRATE_COSTS,INTEGRATE_SCHEDULE,INTEGRATE_PROGRESS,INTEGRATE_REPORTING integration

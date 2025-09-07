@@ -1,0 +1,190 @@
+flowchart TD
+    START([User Selects Architecture Agent]) --> CHECK_AUTH{User Authenticated?}
+    CHECK_AUTH -->|No| LOGIN[Redirect to Login]
+    CHECK_AUTH -->|Yes| PROJ_CHECK{Existing Project?}
+    
+    LOGIN --> AUTH_SUCCESS[Authentication Success]
+    AUTH_SUCCESS --> PROJ_CHECK
+    
+    PROJ_CHECK -->|Yes| LOAD_PROJ[Load Project Data]
+    PROJ_CHECK -->|No| NEW_PROJ[Create New Project]
+    
+    NEW_PROJ --> PROJ_SETUP[Project Setup Form<br/>• Name & Description<br/>• Project Type<br/>• Budget Range]
+    PROJ_SETUP --> SAVE_PROJ[Save Project to Supabase]
+    SAVE_PROJ --> MAIN_MENU
+    
+    LOAD_PROJ --> MAIN_MENU[Architecture Main Menu<br/>📐 Generate Exterior<br/>🏠 Create Floor Plan<br/>🪑 Design Interior<br/>📚 View Library]
+    
+    MAIN_MENU --> CHOICE{Select Action}
+    
+    CHOICE --> EXT_GEN[Generate Exterior]
+    CHOICE --> FLOOR_PLAN[Create Floor Plan]
+    CHOICE --> INT_DES[Design Interior]
+    CHOICE --> VIEW_LIB[View Design Library]
+    
+    %% Exterior Generation Flow
+    EXT_GEN --> EXT_FORM[Exterior Preferences Form<br/>• Architectural Style<br/>• Square Footage<br/>• Number of Stories<br/>• Color Preferences<br/>• Material Preferences]
+    EXT_FORM --> EXT_INPUTS{Validate Inputs}
+    EXT_INPUTS -->|Invalid| EXT_ERROR[❌ Show Error Message<br/>• Missing required fields<br/>• Invalid values<br/>• Budget constraints]
+    EXT_ERROR --> EXT_FORM
+    
+    EXT_INPUTS -->|Valid| MODEL_SEL[Select AI Model<br/>🤖 Claude 3.5 Sonnet<br/>🎨 DALL-E 3<br/>🖼️ Midjourney<br/>⚡ Stable Diffusion]
+    MODEL_SEL --> MODEL_CHECK{Model Available?}
+    MODEL_CHECK -->|No| MODEL_ERROR[❌ Model Unavailable<br/>• Service down<br/>• Rate limit exceeded<br/>• Insufficient credits]
+    MODEL_ERROR --> MODEL_SEL
+    
+    MODEL_CHECK -->|Yes| GEN_PROMPT[Generate AI Prompt<br/>• Style: Modern Farmhouse<br/>• Size: 2500 sq ft<br/>• Stories: 2-story<br/>• Materials: Brick & Wood<br/>• Setting: Suburban]
+    GEN_PROMPT --> API_CALL[Call OpenRouter API<br/>POST /api/generate<br/>Headers: Authorization<br/>Body: Prompt + Parameters]
+    API_CALL --> API_RESP{API Response OK?}
+    
+    API_RESP -->|Error| API_ERROR[❌ Show API Error<br/>• Timeout<br/>• Invalid response<br/>• Server error<br/>• Quota exceeded]
+    API_ERROR --> MODEL_SEL
+    
+    API_RESP -->|Success| PROC_IMG[Process Generated Image<br/>• Resize & optimize<br/>• Extract metadata<br/>• Generate thumbnails<br/>• Quality check]
+    PROC_IMG --> SAVE_IMG[Save to Supabase Storage<br/>• Upload to CDN<br/>• Generate public URL<br/>• Set permissions<br/>• Create database record]
+    SAVE_IMG --> UPDATE_DB[Update Project Database<br/>• Link to project<br/>• Save parameters<br/>• Update timestamp<br/>• Increment version]
+    UPDATE_DB --> SYNC_EVENT[Trigger Sync Event<br/>📡 Notify other agents<br/>🔄 Update project status<br/>📊 Log activity]
+    SYNC_EVENT --> SHOW_EXT[Display Generated Exterior<br/>🖼️ High-res preview<br/>📋 Generation details<br/>⭐ Quality rating<br/>🔧 Edit options]
+    
+    SHOW_EXT --> EXT_ACTIONS{User Action}
+    EXT_ACTIONS --> REGENERATE[🔄 Regenerate<br/>Different style/parameters]
+    EXT_ACTIONS --> SAVE_FINAL[💾 Save to Library<br/>Add to favorites]
+    EXT_ACTIONS --> MODIFY[✏️ Modify Parameters<br/>Adjust style/colors]
+    EXT_ACTIONS --> EXPORT_EXT[📤 Export Design<br/>Download files]
+    
+    REGENERATE --> GEN_PROMPT
+    MODIFY --> EXT_FORM
+    SAVE_FINAL --> LIB_SAVE[Add to Design Library<br/>• Categorize by style<br/>• Add tags<br/>• Set privacy<br/>• Generate preview]
+    LIB_SAVE --> NOTIFY_AGENTS[Notify Other Agents<br/>📤 Developer: Property requirements<br/>📤 Builder: Cost implications<br/>📤 Construction: Method impact<br/>📤 Zoning: Design compliance]
+    
+    %% Floor Plan Flow
+    FLOOR_PLAN --> FLOOR_FORM[Floor Plan Requirements<br/>• Bedrooms: 4<br/>• Bathrooms: 3<br/>• Square Footage: 2500<br/>• Special Rooms: Office, Gym<br/>• Accessibility Needs]
+    FLOOR_FORM --> FLOOR_INPUTS{Validate Requirements}
+    FLOOR_INPUTS -->|Invalid| FLOOR_ERROR[❌ Show Requirements Error<br/>• Impossible layout<br/>• Size constraints<br/>• Code violations]
+    FLOOR_ERROR --> FLOOR_FORM
+    
+    FLOOR_INPUTS -->|Valid| FLOOR_TYPE{Creation Method}
+    FLOOR_TYPE --> AI_FLOOR[🤖 AI Generated<br/>Smart layout optimization]
+    FLOOR_TYPE --> MANUAL_FLOOR[✏️ Manual Editor<br/>Drag & drop interface]
+    FLOOR_TYPE --> TEMPLATE[📋 Use Template<br/>Pre-designed layouts]
+    
+    AI_FLOOR --> FLOOR_AI_PROMPT[Generate Floor Plan Prompt<br/>• Room requirements<br/>• Traffic flow optimization<br/>• Natural light preferences<br/>• Privacy considerations]
+    FLOOR_AI_PROMPT --> FLOOR_API[Call Floor Plan API<br/>• Generate layout<br/>• Optimize room sizes<br/>• Add standard fixtures<br/>• Check building codes]
+    FLOOR_API --> FLOOR_PROC[Process Floor Plan Data<br/>• Convert to vector format<br/>• Calculate room areas<br/>• Generate room labels<br/>• Create scale drawings]
+    
+    MANUAL_FLOOR --> FLOOR_EDITOR[Open Floor Plan Editor<br/>🎨 Drawing tools<br/>📐 Measurement tools<br/>🚪 Door/window library<br/>🪑 Fixture library]
+    FLOOR_EDITOR --> EDITOR_TOOLS[Load Editor Tools<br/>• Wall drawing<br/>• Room creation<br/>• Dimension tools<br/>• Symbol library]
+    EDITOR_TOOLS --> DRAW_MODE[Drawing Mode<br/>• Click to add walls<br/>• Snap to grid<br/>• Auto-complete rooms<br/>• Real-time measurements]
+    DRAW_MODE --> EDITOR_SAVE[Save Editor Changes<br/>• Auto-save every 30s<br/>• Version history<br/>• Undo/redo stack<br/>• Validation checks]
+    
+    TEMPLATE --> TEMPLATE_LIB[Load Template Library<br/>🏠 Single Family<br/>🏢 Multi-family<br/>🏬 Commercial<br/>♿ Accessible designs]
+    TEMPLATE_LIB --> SELECT_TEMPLATE[Select Template<br/>• Preview 3D view<br/>• Check compatibility<br/>• Review specifications<br/>• Compare options]
+    SELECT_TEMPLATE --> CUSTOMIZE[Customize Template<br/>• Resize rooms<br/>• Move walls<br/>• Add/remove features<br/>• Update materials]
+    CUSTOMIZE --> TEMPLATE_SAVE[Save Customized Plan<br/>• Generate new version<br/>• Update metadata<br/>• Recalculate areas<br/>• Validate changes]
+    
+    FLOOR_PROC --> FLOOR_DISPLAY[Display Floor Plan<br/>📐 2D view with dimensions<br/>🏠 3D preview<br/>📊 Room area calculations<br/>💰 Estimated costs]
+    EDITOR_SAVE --> FLOOR_DISPLAY
+    TEMPLATE_SAVE --> FLOOR_DISPLAY
+    
+    FLOOR_DISPLAY --> FLOOR_ACTIONS{User Action}
+    FLOOR_ACTIONS --> FLOOR_EDIT[✏️ Edit Plan<br/>Modify layout]
+    FLOOR_ACTIONS --> FLOOR_SAVE[💾 Save Plan<br/>Add to project]
+    FLOOR_ACTIONS --> FLOOR_3D[🏠 View 3D<br/>Virtual walkthrough]
+    FLOOR_ACTIONS --> FLOOR_EXPORT[📤 Export Plan<br/>PDF, CAD, images]
+    
+    FLOOR_EDIT --> FLOOR_EDITOR
+    FLOOR_SAVE --> UPDATE_FLOOR_DB[Update Database<br/>• Save floor plan data<br/>• Calculate total area<br/>• Update project status<br/>• Trigger cost recalculation]
+    FLOOR_3D --> RENDER_3D[Render 3D View<br/>• Generate 3D model<br/>• Apply textures<br/>• Set lighting<br/>• Create camera paths]
+    RENDER_3D --> DISPLAY_3D[Display 3D Model<br/>🎮 Interactive controls<br/>🚶 Virtual walkthrough<br/>📸 Screenshot capture<br/>🎬 Animation export]
+    
+    %% Interior Design Flow
+    INT_DES --> ROOM_SEL[Select Room Type<br/>🛏️ Bedroom<br/>👨‍🍳 Kitchen<br/>🛋️ Living Room<br/>🚿 Bathroom<br/>🏢 Office]
+    ROOM_SEL --> STYLE_SEL[Select Interior Style<br/>🏠 Modern<br/>🌾 Farmhouse<br/>✨ Contemporary<br/>🏛️ Traditional<br/>🏭 Industrial<br/>🌿 Scandinavian]
+    STYLE_SEL --> BUDGET_SET[Set Budget Range<br/>💰 $5,000 - $15,000<br/>💎 $15,000 - $30,000<br/>👑 $30,000+<br/>🎯 Custom budget]
+    BUDGET_SET --> INT_GENERATE[Generate Interior<br/>• AI furniture placement<br/>• Color coordination<br/>• Lighting design<br/>• Accessory selection]
+    
+    INT_GENERATE --> INT_API[Call Interior Design API<br/>• Room analysis<br/>• Style application<br/>• Furniture recommendation<br/>• 3D rendering]
+    INT_API --> PRODUCT_MATCH[Match Products<br/>🛋️ Amazon furniture<br/>🏠 Wayfair catalog<br/>🪑 IKEA products<br/>💡 Lighting fixtures]
+    PRODUCT_MATCH --> PRICE_CALC[Calculate Pricing<br/>• Item costs<br/>• Shipping fees<br/>• Tax calculations<br/>• Discount applications]
+    PRICE_CALC --> INT_RESULT[Show Interior Design<br/>🖼️ 3D rendered room<br/>🛒 Shopping list<br/>💰 Total cost breakdown<br/>🔗 Purchase links]
+    
+    INT_RESULT --> INT_ACTIONS{User Action}
+    INT_ACTIONS --> PRODUCT_LINKS[🛒 View Product Links<br/>Direct to vendor sites]
+    INT_ACTIONS --> SAVE_INT[💾 Save Interior<br/>Add to library]
+    INT_ACTIONS --> MODIFY_INT[✏️ Modify Design<br/>Change style/budget]
+    INT_ACTIONS --> SHARE_INT[📤 Share Design<br/>Export images/lists]
+    
+    PRODUCT_LINKS --> VENDOR_REDIRECT[Redirect to Vendor<br/>• Amazon product page<br/>• Wayfair catalog<br/>• Local retailer<br/>• Track affiliate links]
+    SAVE_INT --> INT_LIB[Add to Library<br/>• Save design data<br/>• Store product list<br/>• Generate preview<br/>• Set categories]
+    MODIFY_INT --> STYLE_SEL
+    
+    %% Design Library Flow
+    VIEW_LIB --> LIB_DISPLAY[Display Design Library<br/>📂 All designs<br/>⭐ Favorites<br/>📅 Recent<br/>🏷️ By category]
+    LIB_DISPLAY --> LIB_FILTER{Filter Options}
+    LIB_FILTER --> FILTER_TYPE[Filter by Type<br/>🏠 Exteriors<br/>📐 Floor Plans<br/>🪑 Interiors]
+    LIB_FILTER --> FILTER_DATE[Filter by Date<br/>📅 Last week<br/>📅 Last month<br/>📅 Custom range]
+    LIB_FILTER --> FILTER_STYLE[Filter by Style<br/>🏠 Modern<br/>🌾 Farmhouse<br/>✨ Contemporary]
+    LIB_FILTER --> SEARCH_LIB[🔍 Search Library<br/>Keywords, tags, names]
+    
+    FILTER_TYPE --> FILTERED_RESULTS[Show Filtered Results<br/>📊 Grid view<br/>📋 List view<br/>📱 Card view]
+    FILTER_DATE --> FILTERED_RESULTS
+    FILTER_STYLE --> FILTERED_RESULTS
+    SEARCH_LIB --> FILTERED_RESULTS
+    
+    FILTERED_RESULTS --> LIB_ACTIONS{Library Actions}
+    LIB_ACTIONS --> VIEW_DETAIL[👁️ View Details<br/>Full specifications]
+    LIB_ACTIONS --> DUPLICATE[📋 Duplicate Design<br/>Create copy for editing]
+    LIB_ACTIONS --> DELETE_ITEM[🗑️ Delete Item<br/>Remove from library]
+    LIB_ACTIONS --> EXPORT_DESIGN[📤 Export Design<br/>Download files/data]
+    LIB_ACTIONS --> SHARE_DESIGN[🔗 Share Design<br/>Generate share link]
+    
+    %% Integration & Sync
+    NOTIFY_AGENTS --> SYNC_DEVELOPER[📤 Sync to Developer Agent<br/>• Update property search criteria<br/>• Adjust size requirements<br/>• Modify location preferences<br/>• Update budget parameters]
+    NOTIFY_AGENTS --> SYNC_BUILDER[📤 Sync to Builder Agent<br/>• Recalculate material costs<br/>• Update labor estimates<br/>• Adjust timeline<br/>• Revise contractor requirements]
+    NOTIFY_AGENTS --> SYNC_CONSTRUCTION[📤 Sync to Construction Agent<br/>• Update construction methods<br/>• Adjust equipment needs<br/>• Revise safety requirements<br/>• Update quality standards]
+    NOTIFY_AGENTS --> SYNC_ZONING[📤 Sync to Zoning Agent<br/>• Check design compliance<br/>• Update permit requirements<br/>• Verify setback compliance<br/>• Adjust legal documentation]
+    
+    SYNC_DEVELOPER --> DEV_UPDATE[🔄 Update Property Requirements<br/>• Minimum lot size<br/>• Zoning requirements<br/>• Utility access needs<br/>• Neighborhood preferences]
+    SYNC_BUILDER --> BUILD_UPDATE[🔄 Update Cost Estimates<br/>• Material quantity changes<br/>• Labor hour adjustments<br/>• Equipment rental updates<br/>• Timeline modifications]
+    SYNC_CONSTRUCTION --> CONST_UPDATE[🔄 Update Construction Methods<br/>• Foundation requirements<br/>• Framing specifications<br/>• Systems integration<br/>• Quality checkpoints]
+    SYNC_ZONING --> ZONE_UPDATE[🔄 Update Permit Requirements<br/>• Building permit scope<br/>• Inspection schedules<br/>• Code compliance checks<br/>• Documentation updates]
+    
+    %% Exit Points and Completion
+    VIEW_DETAIL --> MAIN_MENU
+    DUPLICATE --> MAIN_MENU
+    DELETE_ITEM --> MAIN_MENU
+    EXPORT_DESIGN --> DOWNLOAD[📥 Download Files<br/>• PDF reports<br/>• CAD files<br/>• 3D models<br/>• Image renders]
+    SHARE_DESIGN --> SHARE_LINK[🔗 Generate Share Link<br/>• Public/private options<br/>• Expiration settings<br/>• Access permissions<br/>• Usage tracking]
+    DOWNLOAD --> MAIN_MENU
+    SHARE_LINK --> MAIN_MENU
+    VENDOR_REDIRECT --> MAIN_MENU
+    INT_LIB --> MAIN_MENU
+    DISPLAY_3D --> MAIN_MENU
+    UPDATE_FLOOR_DB --> MAIN_MENU
+    DEV_UPDATE --> COMPLETE[✅ Sync Complete<br/>All agents updated]
+    BUILD_UPDATE --> COMPLETE
+    CONST_UPDATE --> COMPLETE
+    ZONE_UPDATE --> COMPLETE
+    COMPLETE --> MAIN_MENU
+    
+    %% Error Handling and Logging
+    API_ERROR --> ERROR_LOG[📝 Log Error<br/>• Error type & code<br/>• User session data<br/>• API response details<br/>• Timestamp & duration]
+    MODEL_ERROR --> ERROR_LOG
+    FLOOR_ERROR --> ERROR_LOG
+    ERROR_LOG --> ALERT_USER[🚨 Alert User<br/>• User-friendly message<br/>• Suggested actions<br/>• Support contact info<br/>• Error reference ID]
+    ALERT_USER --> MAIN_MENU
+
+    %% Styling
+    classDef startEnd fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef error fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+    classDef success fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef sync fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+    
+    class START,COMPLETE startEnd
+    class EXT_FORM,FLOOR_FORM,INT_GENERATE process
+    class CHECK_AUTH,PROJ_CHECK,CHOICE decision
+    class EXT_ERROR,MODEL_ERROR,API_ERROR,FLOOR_ERROR error
+    class SAVE_FINAL,LIB_SAVE,UPDATE_FLOOR_DB success
+    class SYNC_EVENT,NOTIFY_AGENTS,DEV_UPDATE,BUILD_UPDATE,CONST_UPDATE,ZONE_UPDATE sync

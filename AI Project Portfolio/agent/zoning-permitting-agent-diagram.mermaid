@@ -1,0 +1,173 @@
+flowchart TD
+    START([User Selects Zoning & Permitting Agent]) --> AUTH_CHECK{User Authenticated?}
+    AUTH_CHECK -->|No| LOGIN[🔐 Login Required<br/>Redirect to authentication]
+    AUTH_CHECK -->|Yes| ZONING_MENU[Zoning & Permitting Menu<br/>🏛️ Zoning Analysis<br/>📋 Permit Management<br/>📜 Code Compliance<br/>🔍 Inspection Coordination<br/>🌍 Environmental Compliance<br/>⚖️ Variance & Appeals<br/>🔗 Agent Integration]
+    
+    LOGIN --> ZONING_MENU
+    
+    ZONING_MENU --> ZONING_CHOICE{Select Action}
+    
+    ZONING_CHOICE --> ZONING_ANALYSIS[🏛️ Zoning Analysis]
+    ZONING_CHOICE --> PERMIT_MANAGEMENT[📋 Permit Management]
+    ZONING_CHOICE --> CODE_COMPLIANCE[📜 Code Compliance]
+    ZONING_CHOICE --> INSPECTION_COORD[🔍 Inspection Coordination]
+    ZONING_CHOICE --> ENVIRONMENTAL_COMP[🌍 Environmental Compliance]
+    ZONING_CHOICE --> VARIANCE_APPEALS[⚖️ Variance & Appeals]
+    ZONING_CHOICE --> AGENT_INTEGRATION[🔗 Agent Integration]
+    
+    %% Zoning Analysis Flow
+    ZONING_ANALYSIS --> ZONING_SETUP[🏛️ Zoning Analysis Setup<br/>📍 Property location<br/>🗺️ Jurisdiction mapping<br/>📋 Project parameters<br/>🎯 Analysis scope<br/>📅 Timeline requirements]
+    ZONING_SETUP --> JURISDICTION_ID[🏛️ Jurisdiction Identification<br/>🏙️ Municipality boundaries<br/>🏛️ County jurisdictions<br/>🏛️ State requirements<br/>🏛️ Federal regulations<br/>🗺️ Overlay districts<br/>📋 Special districts]
+    JURISDICTION_ID --> ZONING_RESEARCH[📚 Zoning Code Research<br/>📜 Current zoning codes<br/>🔄 Recent amendments<br/>📋 Ordinance history<br/>🗺️ Zoning maps<br/>📊 Allowed uses<br/>📏 Dimensional standards]
+    ZONING_RESEARCH --> USE_ANALYSIS[🏠 Permitted Use Analysis<br/>✅ Primary uses<br/>🔄 Conditional uses<br/>❌ Prohibited uses<br/>🏗️ Accessory uses<br/>📋 Special permits<br/>🔍 Use definitions]
+    
+    USE_ANALYSIS --> DIMENSIONAL_ANALYSIS[📏 Dimensional Analysis<br/>📐 Setback requirements<br/>📊 Height restrictions<br/>📏 Lot coverage<br/>🏠 Floor area ratio<br/>🚗 Parking requirements<br/>🌳 Open space requirements]
+    DIMENSIONAL_ANALYSIS --> OVERLAY_ANALYSIS[🗺️ Overlay District Analysis<br/>🏛️ Historic districts<br/>🌊 Flood zones<br/>🌳 Environmental overlays<br/>✈️ Airport zones<br/>🏛️ Design districts<br/>📋 Special regulations]
+    OVERLAY_ANALYSIS --> ZONING_COMPLIANCE[✅ Zoning Compliance Check<br/>✅ Use compliance<br/>📐 Dimensional compliance<br/>🚗 Parking compliance<br/>🌳 Landscaping compliance<br/>⚠️ Non-conformities<br/>💡 Compliance strategies]
+    ZONING_COMPLIANCE --> ZONING_REPORT[📄 Zoning Analysis Report<br/>📊 Compliance summary<br/>⚠️ Issues identified<br/>💡 Recommendations<br/>📋 Required permits<br/>⏱️ Timeline estimates<br/>💰 Cost projections]
+    
+    %% Permit Management Flow
+    PERMIT_MANAGEMENT --> PERMIT_SETUP[📋 Permit Management Setup<br/>🏗️ Project type<br/>📋 Permit requirements<br/>👥 Stakeholder roles<br/>📅 Timeline planning<br/>💰 Fee estimates]
+    PERMIT_SETUP --> PERMIT_IDENTIFICATION[📋 Permit Identification<br/>🏗️ Building permits<br/>⚡ Electrical permits<br/>🚰 Plumbing permits<br/>🔥 Fire permits<br/>🌍 Environmental permits<br/>🚗 Access permits]
+    PERMIT_IDENTIFICATION --> APPLICATION_PREP[📝 Application Preparation<br/>📋 Form completion<br/>📄 Document collection<br/>🎨 Plan reviews<br/>💰 Fee calculations<br/>📅 Submission scheduling<br/>✅ Completeness checks]
+    APPLICATION_PREP --> DOCUMENT_MGMT[📄 Document Management<br/>🎨 Architectural plans<br/>🏗️ Structural drawings<br/>⚡ MEP drawings<br/>📋 Specifications<br/>📊 Calculations<br/>📸 Site photos]
+    
+    DOCUMENT_MGMT --> SUBMISSION_PROCESS[📤 Submission Process<br/>🏛️ Authority identification<br/>📋 Submission methods<br/>💰 Fee payment<br/>📅 Tracking setup<br/>📧 Confirmation receipt<br/>📊 Status monitoring]
+    SUBMISSION_PROCESS --> REVIEW_TRACKING[👁️ Review Tracking<br/>📅 Review timelines<br/>👥 Reviewer assignments<br/>📞 Communication logs<br/>📋 Comment tracking<br/>🔄 Revision management<br/>⏰ Deadline monitoring]
+    REVIEW_TRACKING --> COMMENT_RESPONSE[💬 Comment Response<br/>📋 Comment analysis<br/>💡 Response strategies<br/>🎨 Plan revisions<br/>📄 Written responses<br/>📅 Resubmission<br/>👥 Stakeholder coordination]
+    COMMENT_RESPONSE --> PERMIT_APPROVAL[✅ Permit Approval<br/>📋 Approval notifications<br/>📄 Permit issuance<br/>💰 Final fees<br/>📅 Validity periods<br/>📋 Conditions<br/>📊 Compliance tracking]
+    
+    %% Code Compliance Flow
+    CODE_COMPLIANCE --> CODE_SETUP[📜 Code Compliance Setup<br/>🏗️ Building codes<br/>🔥 Fire codes<br/>🦽 Accessibility codes<br/>⚡ Electrical codes<br/>🚰 Plumbing codes<br/>🌍 Energy codes]
+    CODE_SETUP --> CODE_RESEARCH[📚 Code Research<br/>📜 Current code editions<br/>🔄 Amendment tracking<br/>📋 Local modifications<br/>🏛️ Jurisdiction variations<br/>📅 Effective dates<br/>🔍 Interpretation guides]
+    CODE_RESEARCH --> BUILDING_CODE_ANALYSIS[🏗️ Building Code Analysis<br/>🏠 Occupancy classification<br/>🏗️ Construction type<br/>📊 Height & area limits<br/>🚪 Egress requirements<br/>🔥 Fire resistance<br/>♿ Accessibility requirements]
+    BUILDING_CODE_ANALYSIS --> FIRE_CODE_ANALYSIS[🔥 Fire & Life Safety<br/>🚨 Fire alarm systems<br/>💧 Sprinkler systems<br/>🚪 Emergency exits<br/>🔥 Fire separations<br/>🚒 Fire department access<br/>📋 Emergency planning]
+    
+    FIRE_CODE_ANALYSIS --> ACCESSIBILITY_ANALYSIS[♿ Accessibility Compliance<br/>🚪 ADA requirements<br/>🛗 Elevator access<br/>🚻 Restroom facilities<br/>🅿️ Parking requirements<br/>🚶 Path of travel<br/>📐 Dimensional requirements]
+    ACCESSIBILITY_ANALYSIS --> ENERGY_CODE_ANALYSIS[⚡ Energy Code Compliance<br/>🌡️ Insulation requirements<br/>🪟 Window performance<br/>❄️ HVAC efficiency<br/>💡 Lighting systems<br/>🔌 Electrical systems<br/>📊 Energy modeling]
+    ENERGY_CODE_ANALYSIS --> STRUCTURAL_ANALYSIS[🏗️ Structural Code Review<br/>🌪️ Wind load analysis<br/>🌊 Seismic requirements<br/>❄️ Snow load analysis<br/>🏗️ Foundation requirements<br/>🔩 Connection details<br/>📊 Load calculations]
+    STRUCTURAL_ANALYSIS --> CODE_COMPLIANCE_REPORT[📄 Code Compliance Report<br/>✅ Compliance status<br/>⚠️ Code violations<br/>💡 Correction strategies<br/>📋 Required modifications<br/>💰 Cost implications<br/>⏱️ Timeline impacts]
+    
+    %% Inspection Coordination Flow
+    INSPECTION_COORD --> INSPECTION_SETUP[🔍 Inspection Setup<br/>📋 Inspection types<br/>📅 Scheduling requirements<br/>👥 Inspector assignments<br/>📞 Contact information<br/>📋 Preparation checklists]
+    INSPECTION_SETUP --> INSPECTION_PLANNING[📅 Inspection Planning<br/>🏗️ Construction milestones<br/>📅 Inspection sequences<br/>⏰ Lead time requirements<br/>👷 Contractor coordination<br/>📋 Readiness checklists<br/>🔄 Rescheduling protocols]
+    INSPECTION_PLANNING --> INSPECTION_SCHEDULING[📞 Inspection Scheduling<br/>📅 Schedule requests<br/>📞 Inspector availability<br/>🔄 Confirmation process<br/>📱 Automated reminders<br/>📋 Preparation notices<br/>⚠️ Delay notifications]
+    INSPECTION_SCHEDULING --> PRE_INSPECTION[📋 Pre-Inspection Preparation<br/>🧹 Site preparation<br/>📋 Document readiness<br/>👷 Contractor notification<br/>🔍 Self-inspection<br/>📸 Photo documentation<br/>🦺 Safety preparations]
+    
+    PRE_INSPECTION --> INSPECTION_CONDUCT[🔍 Inspection Coordination<br/>👥 Inspector escort<br/>📋 Checklist review<br/>📸 Photo documentation<br/>📝 Note taking<br/>❌ Deficiency identification<br/>✅ Approval items]
+    INSPECTION_CONDUCT --> INSPECTION_RESULTS[📊 Inspection Results<br/>✅ Pass notifications<br/>❌ Fail documentation<br/>📋 Correction lists<br/>📅 Re-inspection scheduling<br/>📞 Stakeholder communication<br/>📄 Report generation]
+    INSPECTION_RESULTS --> CORRECTION_TRACKING[🔄 Correction Tracking<br/>📋 Deficiency lists<br/>👷 Contractor assignments<br/>📅 Correction deadlines<br/>📸 Progress photos<br/>✅ Completion verification<br/>📞 Communication logs]
+    CORRECTION_TRACKING --> RE_INSPECTION[🔍 Re-Inspection Process<br/>📅 Re-inspection scheduling<br/>🔍 Correction verification<br/>✅ Final approvals<br/>📄 Documentation updates<br/>📊 Compliance tracking<br/>🎯 Phase completion]
+    
+    %% Environmental Compliance Flow
+    ENVIRONMENTAL_COMP --> ENV_SETUP[🌍 Environmental Setup<br/>🌍 Environmental regulations<br/>🏛️ Agency requirements<br/>📋 Compliance scope<br/>🔍 Assessment needs<br/>📅 Timeline planning]
+    ENV_SETUP --> ENVIRONMENTAL_ASSESSMENT[🌍 Environmental Assessment<br/>🌊 Wetland delineation<br/>🌳 Endangered species<br/>🏛️ Historic preservation<br/>🌫️ Air quality<br/>💧 Water quality<br/>🌍 Soil contamination]
+    ENVIRONMENTAL_ASSESSMENT --> WETLAND_ANALYSIS[🌊 Wetland & Waterway Analysis<br/>🗺️ Wetland mapping<br/>📏 Buffer requirements<br/>💧 Stream setbacks<br/>🐟 Fish habitat<br/>🌊 Flood zone analysis<br/>📋 Mitigation requirements]
+    WETLAND_ANALYSIS --> SPECIES_PROTECTION[🐾 Species Protection<br/>🦅 Endangered species<br/>🌳 Habitat assessment<br/>📅 Seasonal restrictions<br/>🔍 Survey requirements<br/>📋 Protection measures<br/>🌱 Mitigation planning]
+    
+    SPECIES_PROTECTION --> HISTORIC_PRESERVATION[🏛️ Historic Preservation<br/>🏛️ Historic districts<br/>🏗️ Historic structures<br/>🔍 Archaeological surveys<br/>📋 Review requirements<br/>💡 Design guidelines<br/>📄 Documentation needs]
+    HISTORIC_PRESERVATION --> ENVIRONMENTAL_PERMITS[📋 Environmental Permits<br/>🌊 Wetland permits<br/>💧 Water quality permits<br/>🌫️ Air quality permits<br/>🌍 Soil disturbance<br/>🌳 Tree removal permits<br/>♻️ Waste permits]
+    ENVIRONMENTAL_PERMITS --> MITIGATION_PLANNING[🌱 Mitigation Planning<br/>🌳 Tree replacement<br/>🌊 Wetland creation<br/>🐾 Habitat restoration<br/>💧 Stormwater management<br/>🌍 Soil remediation<br/>📊 Impact calculations]
+    MITIGATION_PLANNING --> ENV_MONITORING[📊 Environmental Monitoring<br/>📊 Compliance tracking<br/>📸 Photo documentation<br/>🔬 Testing requirements<br/>📋 Reporting schedules<br/>⚠️ Violation response<br/>📄 Annual reports]
+    
+    %% Variance & Appeals Flow
+    VARIANCE_APPEALS --> VARIANCE_SETUP[⚖️ Variance & Appeals Setup<br/>📋 Request types<br/>⚖️ Legal requirements<br/>👥 Board information<br/>📅 Process timelines<br/>💰 Fee structures]
+    VARIANCE_SETUP --> VARIANCE_ANALYSIS[🔍 Variance Analysis<br/>📏 Dimensional variances<br/>🏠 Use variances<br/>📋 Administrative appeals<br/>⚖️ Hardship analysis<br/>🏘️ Neighborhood impact<br/>📊 Precedent research]
+    VARIANCE_ANALYSIS --> HARDSHIP_DOCUMENTATION[📄 Hardship Documentation<br/>📊 Financial hardship<br/>🌍 Physical constraints<br/>📏 Unique circumstances<br/>📸 Photo evidence<br/>📋 Expert testimony<br/>💡 Alternative solutions]
+    HARDSHIP_DOCUMENTATION --> PUBLIC_PROCESS[👥 Public Process Management<br/>📰 Public notifications<br/>🏛️ Hearing scheduling<br/>📋 Neighbor outreach<br/>💬 Public comments<br/>📊 Opposition analysis<br/>🤝 Compromise solutions]
+    
+    PUBLIC_PROCESS --> PRESENTATION_PREP[📊 Presentation Preparation<br/>📊 Visual presentations<br/>📋 Supporting documents<br/>👥 Expert witnesses<br/>📈 Impact analysis<br/>💡 Benefit demonstration<br/>⚖️ Legal arguments]
+    PRESENTATION_PREP --> HEARING_COORDINATION[🏛️ Hearing Coordination<br/>📅 Hearing attendance<br/>📊 Presentation delivery<br/>💬 Question responses<br/>📋 Record maintenance<br/>👥 Stakeholder support<br/>📄 Follow-up documentation]
+    HEARING_COORDINATION --> DECISION_TRACKING[📊 Decision Tracking<br/>✅ Approval notifications<br/>❌ Denial responses<br/>📋 Condition compliance<br/>⚖️ Appeal options<br/>📅 Timeline monitoring<br/>📄 Record keeping]
+    DECISION_TRACKING --> APPEALS_MANAGEMENT[⚖️ Appeals Management<br/>⚖️ Court filings<br/>👥 Legal representation<br/>📄 Brief preparation<br/>🏛️ Court appearances<br/>📊 Case tracking<br/>💰 Cost management]
+    
+    %% Agent Integration Flow
+    AGENT_INTEGRATION --> INTEGRATION_SETUP[🔗 Integration Setup<br/>📊 Data mapping<br/>🔄 Sync protocols<br/>🔐 Security settings<br/>📅 Update schedules<br/>⚠️ Alert configurations]
+    INTEGRATION_SETUP --> DEVELOPER_INTEGRATION[📤 Developer Agent Integration<br/>💰 Budget impacts<br/>📈 ROI implications<br/>⏱️ Timeline effects<br/>⚠️ Risk factors<br/>📊 Market impacts<br/>🎯 Strategy alignment]
+    INTEGRATION_SETUP --> BUILDER_INTEGRATION[📤 Builder Agent Integration<br/>📋 Permit status<br/>🔍 Inspection schedules<br/>📄 Compliance requirements<br/>💰 Cost adjustments<br/>📅 Timeline updates<br/>⚠️ Issue alerts]
+    INTEGRATION_SETUP --> CONSTRUCTION_INTEGRATION[📤 Construction Integration<br/>🔍 Inspection coordination<br/>📋 Compliance monitoring<br/>⚠️ Violation alerts<br/>🔄 Correction tracking<br/>✅ Approval confirmations<br/>📊 Progress updates]
+    INTEGRATION_SETUP --> ARCHITECTURE_INTEGRATION[📤 Architecture Integration<br/>📜 Code requirements<br/>🎨 Design modifications<br/>📋 Plan revisions<br/>💡 Compliance strategies<br/>📐 Dimensional adjustments<br/>✅ Approval confirmations]
+    
+    DEVELOPER_INTEGRATION --> DATA_SYNCHRONIZATION[🔄 Data Synchronization<br/>📊 Real-time updates<br/>🔄 Bi-directional sync<br/>⚠️ Conflict resolution<br/>📋 Audit trails<br/>✅ Data validation<br/>🔐 Security protocols]
+    BUILDER_INTEGRATION --> DATA_SYNCHRONIZATION
+    CONSTRUCTION_INTEGRATION --> DATA_SYNCHRONIZATION
+    ARCHITECTURE_INTEGRATION --> DATA_SYNCHRONIZATION
+    
+    DATA_SYNCHRONIZATION --> COMPLIANCE_DASHBOARD[📊 Compliance Dashboard<br/>📈 Status overview<br/>⚠️ Alert center<br/>📅 Milestone tracking<br/>📊 Performance metrics<br/>🎯 Goal monitoring<br/>📄 Report generation]
+    COMPLIANCE_DASHBOARD --> AUTOMATED_ALERTS[🚨 Automated Alerts<br/>⏰ Deadline reminders<br/>📋 Inspection notices<br/>⚠️ Violation alerts<br/>📅 Renewal notifications<br/>🔄 Status changes<br/>📞 Escalation protocols]
+    AUTOMATED_ALERTS --> INTEGRATION_REPORTING[📄 Integration Reporting<br/>📊 Cross-agent analytics<br/>📈 Performance dashboards<br/>⚠️ Risk assessments<br/>💰 Cost tracking<br/>📅 Timeline analysis<br/>🎯 Alignment metrics]
+    
+    %% Certificate of Occupancy Flow
+    PERMIT_APPROVAL --> CO_PREPARATION[🏆 Certificate of Occupancy Prep<br/>📋 Final inspections<br/>✅ Code compliance<br/>📄 Documentation review<br/>🔍 Final walkthrough<br/>📊 Checklist completion]
+    CO_PREPARATION --> FINAL_INSPECTION_COORD[🔍 Final Inspection Coordination<br/>📅 Inspection scheduling<br/>👥 Multi-department coordination<br/>🔥 Fire department approval<br/>🏛️ Building department sign-off<br/>⚡ Electrical approval<br/>🚰 Plumbing approval]
+    FINAL_INSPECTION_COORD --> CO_APPLICATION[📋 CO Application Process<br/>📝 Application completion<br/>💰 Fee payment<br/>📄 Document submission<br/>📸 Final photos<br/>📋 Compliance certification<br/>⏰ Processing timeline]
+    CO_APPLICATION --> CO_ISSUANCE[🏆 CO Issuance<br/>✅ Final approval<br/>📄 Certificate generation<br/>📧 Notification distribution<br/>📁 Record archiving<br/>🎉 Project completion<br/>📞 Stakeholder communication]
+    
+    %% Utility Coordination
+    PERMIT_IDENTIFICATION --> UTILITY_PERMITS[⚡ Utility Permit Coordination<br/>⚡ Electrical utility<br/>💧 Water utility<br/>🌿 Gas utility<br/>📡 Telecommunications<br/>🌐 Cable/internet<br/>♻️ Waste management]
+    UTILITY_PERMITS --> UTILITY_APPLICATIONS[📋 Utility Applications<br/>📝 Service applications<br/>📐 Engineering reviews<br/>💰 Connection fees<br/>📅 Installation scheduling<br/>🔍 Inspection coordination<br/>✅ Service activation]
+    UTILITY_APPLICATIONS --> UTILITY_COORDINATION[🤝 Utility Coordination<br/>📅 Schedule alignment<br/>🚧 Construction coordination<br/>🔍 Joint inspections<br/>📞 Communication protocols<br/>⚠️ Conflict resolution<br/>📊 Progress tracking]
+    
+    %% Advanced Features
+    INTEGRATION_REPORTING --> AI_COMPLIANCE[🤖 AI Compliance Analytics<br/>📊 Pattern recognition<br/>🔮 Predictive compliance<br/>⚠️ Risk modeling<br/>💡 Optimization insights<br/>📈 Trend analysis<br/>🎯 Proactive management]
+    AI_COMPLIANCE --> REGULATORY_TRACKING[📋 Regulatory Change Tracking<br/>📜 Code updates<br/>🏛️ Policy changes<br/>⚖️ Case law updates<br/>📊 Impact analysis<br/>🔔 Stakeholder alerts<br/>📚 Knowledge updates]
+    REGULATORY_TRACKING --> PREDICTIVE_PLANNING[🔮 Predictive Planning<br/>📈 Approval probability<br/>⏱️ Timeline predictions<br/>💰 Cost forecasting<br/>⚠️ Risk assessment<br/>💡 Strategy optimization<br/>🎯 Success maximization]
+    
+    %% Mobile and Digital Tools
+    INSPECTION_CONDUCT --> MOBILE_COMPLIANCE[📱 Mobile Compliance Tools<br/>📋 Digital checklists<br/>📸 Photo capture<br/>🗺️ GPS documentation<br/>📊 Real-time reporting<br/>🔄 Offline capability<br/>📤 Instant sync]
+    MOBILE_COMPLIANCE --> DIGITAL_PERMITS[📱 Digital Permit Management<br/>📋 Electronic applications<br/>💳 Online payments<br/>📊 Status tracking<br/>📞 Direct communication<br/>📄 Document storage<br/>🔔 Push notifications]
+    DIGITAL_PERMITS --> VIRTUAL_INSPECTIONS[📹 Virtual Inspection Support<br/>📹 Video inspections<br/>📷 Photo submissions<br/>📊 Remote monitoring<br/>💻 Virtual meetings<br/>📋 Digital sign-offs<br/>⏰ Flexible scheduling]
+    
+    %% Project Completion
+    CO_ISSUANCE --> RECORD_KEEPING[📁 Record Keeping<br/>📄 Document archiving<br/>🔍 Search indexing<br/>📊 Database updates<br/>📋 Compliance history<br/>🔐 Security protocols<br/>📚 Knowledge capture]
+    RECORD_KEEPING --> POST_OCCUPANCY[🏠 Post-Occupancy Support<br/>📋 Ongoing compliance<br/>🔄 Renewal tracking<br/>📞 Support services<br/>📊 Performance monitoring<br/>🔔 Alert systems<br/>📚 Maintenance guidance]
+    POST_OCCUPANCY --> LESSONS_LEARNED[📚 Lessons Learned<br/>📊 Process analysis<br/>💡 Best practices<br/>⚠️ Challenge documentation<br/>🔄 Process improvements<br/>📋 Template updates<br/>🏆 Success stories]
+    
+    %% Return Paths
+    LESSONS_LEARNED --> ZONING_MENU
+    
+    %% Error Handling
+    DATA_SYNCHRONIZATION --> SYNC_ERROR{Sync Error?}
+    SYNC_ERROR -->|Yes| ERROR_HANDLER[❌ Error Handler<br/>🔄 Retry mechanisms<br/>📝 Error logging<br/>🚨 Alert generation<br/>📞 Support escalation<br/>🔄 Manual override<br/>📋 Incident tracking]
+    SYNC_ERROR -->|No| COMPLIANCE_DASHBOARD
+    ERROR_HANDLER --> ZONING_MENU
+    
+    %% Emergency Procedures
+    ENV_MONITORING --> EMERGENCY_VIOLATION{Critical Violation?}
+    EMERGENCY_VIOLATION -->|Yes| EMERGENCY_RESPONSE[🚨 Emergency Response<br/>⏹️ Stop work orders<br/>🚨 Agency notification<br/>📞 Stakeholder alerts<br/>🦺 Safety protocols<br/>📋 Immediate documentation<br/>⚖️ Legal coordination]
+    EMERGENCY_VIOLATION -->|No| MITIGATION_PLANNING
+    EMERGENCY_RESPONSE --> VIOLATION_RESOLUTION[🛠️ Violation Resolution<br/>💡 Corrective action plan<br/>👥 Stakeholder coordination<br/>📋 Implementation tracking<br/>✅ Compliance verification<br/>📄 Resolution documentation<br/>🔄 Process resumption]
+    VIOLATION_RESOLUTION --> ENV_MONITORING
+    
+    %% Styling
+    classDef startEnd fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef error fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+    classDef success fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef sync fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+    classDef analysis fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+    classDef mobile fill:#e8eaf6,stroke:#283593,stroke-width:2px
+    classDef emergency fill:#fce4ec,stroke:#ad1457,stroke-width:2px
+    classDef regulatory fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+    classDef compliance fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef environmental fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef legal fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef digital fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef inspection fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    
+    class START,CO_ISSUANCE startEnd
+    class ZONING_SETUP,PERMIT_SETUP,CODE_SETUP,INSPECTION_SETUP,ENV_SETUP,VARIANCE_SETUP,INTEGRATION_SETUP process
+    class AUTH_CHECK,ZONING_CHOICE,SYNC_ERROR,EMERGENCY_VIOLATION decision
+    class ERROR_HANDLER error
+    class LESSONS_LEARNED,POST_OCCUPANCY,RECORD_KEEPING success
+    class DEVELOPER_INTEGRATION,BUILDER_INTEGRATION,CONSTRUCTION_INTEGRATION,ARCHITECTURE_INTEGRATION,DATA_SYNCHRONIZATION sync
+    class AI_COMPLIANCE,PREDICTIVE_PLANNING,INTEGRATION_REPORTING analysis
+    class MOBILE_COMPLIANCE,DIGITAL_PERMITS,VIRTUAL_INSPECTIONS mobile
+    class EMERGENCY_RESPONSE,VIOLATION_RESOLUTION emergency
+    class ZONING_RESEARCH,CODE_RESEARCH,REGULATORY_TRACKING regulatory
+    class ZONING_COMPLIANCE,CODE_COMPLIANCE_REPORT,COMPLIANCE_DASHBOARD compliance
+    class ENVIRONMENTAL_ASSESSMENT,WETLAND_ANALYSIS,SPECIES_PROTECTION,ENV_MONITORING environmental
+    class VARIANCE_ANALYSIS,APPEALS_MANAGEMENT,HEARING_COORDINATION legal
+    class DIGITAL_PERMITS,VIRTUAL_INSPECTIONS,MOBILE_COMPLIANCE digital
+    class INSPECTION_PLANNING,INSPECTION_CONDUCT,FINAL_INSPECTION_COORD,RE_INSPECTION inspection

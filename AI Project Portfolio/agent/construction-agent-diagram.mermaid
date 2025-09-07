@@ -1,0 +1,176 @@
+flowchart TD
+    START([User Selects Construction Agent]) --> AUTH_CHECK{User Authenticated?}
+    AUTH_CHECK -->|No| LOGIN[🔐 Login Required<br/>Redirect to authentication]
+    AUTH_CHECK -->|Yes| CONSTRUCTION_MENU[Construction Main Menu<br/>🏗️ Project Execution<br/>👷 Crew Management<br/>🦺 Safety Operations<br/>✅ Quality Control<br/>📦 Logistics Management<br/>📊 Field Reporting<br/>🔗 Agent Coordination]
+    
+    LOGIN --> CONSTRUCTION_MENU
+    
+    CONSTRUCTION_MENU --> CONST_CHOICE{Select Action}
+    
+    CONST_CHOICE --> PROJECT_EXECUTION[🏗️ Project Execution]
+    CONST_CHOICE --> CREW_MANAGEMENT[👷 Crew Management]
+    CONST_CHOICE --> SAFETY_OPERATIONS[🦺 Safety Operations]
+    CONST_CHOICE --> QUALITY_CONTROL[✅ Quality Control]
+    CONST_CHOICE --> LOGISTICS_MGMT[📦 Logistics Management]
+    CONST_CHOICE --> FIELD_REPORTING[📊 Field Reporting]
+    CONST_CHOICE --> AGENT_COORDINATION[🔗 Agent Coordination]
+    
+    %% Project Execution Flow
+    PROJECT_EXECUTION --> RECEIVE_PLANS[📥 Receive Construction Plans<br/>🏗️ Builder agent data<br/>🎨 Architectural drawings<br/>📋 Specifications<br/>📅 Schedule details<br/>💰 Budget parameters<br/>📊 Resource allocations]
+    RECEIVE_PLANS --> SITE_MOBILIZATION[🏗️ Site Mobilization<br/>🚧 Site setup<br/>🏢 Temporary facilities<br/>🔧 Equipment deployment<br/>📦 Material staging<br/>🦺 Safety installations<br/>📋 Permit verification]
+    SITE_MOBILIZATION --> CONSTRUCTION_PHASES[📊 Construction Phase Management<br/>🏞️ Site Preparation<br/>🏗️ Foundation Work<br/>🏠 Structural Framing<br/>⚡ MEP Systems<br/>🎨 Interior Finishes<br/>🏞️ Exterior & Landscaping]
+    
+    CONSTRUCTION_PHASES --> SITE_PREP_PHASE[🏞️ Site Preparation Phase<br/>🌳 Clearing & demolition<br/>📏 Surveying & layout<br/>🚰 Utility location<br/>⛏️ Excavation work<br/>🛣️ Access road preparation<br/>💧 Erosion control]
+    CONSTRUCTION_PHASES --> FOUNDATION_PHASE[🏗️ Foundation Phase<br/>⛏️ Excavation completion<br/>🧱 Footing installation<br/>🏗️ Foundation walls<br/>💧 Waterproofing<br/>🌡️ Insulation installation<br/>⚡ Utility rough-ins]
+    CONSTRUCTION_PHASES --> FRAMING_PHASE[🏠 Structural Framing<br/>🪵 Floor system installation<br/>🏗️ Wall framing<br/>🏠 Roof structure<br/>🔧 Structural connections<br/>📐 Plumb & square checks<br/>🦺 Fall protection]
+    CONSTRUCTION_PHASES --> MEP_PHASE[⚡ MEP Systems Phase<br/>⚡ Electrical rough-in<br/>🚰 Plumbing rough-in<br/>❄️ HVAC installation<br/>🔥 Fire protection<br/>💻 Low voltage systems<br/>📋 System testing]
+    CONSTRUCTION_PHASES --> FINISH_PHASE[🎨 Finish Phase<br/>🧱 Drywall installation<br/>🎨 Painting<br/>🚪 Millwork installation<br/>💡 Fixture installation<br/>🏠 Flooring installation<br/>🏠 Final trim]
+    CONSTRUCTION_PHASES --> EXTERIOR_PHASE[🏞️ Exterior & Final<br/>🏠 Exterior finishes<br/>🌳 Landscaping<br/>🚗 Driveway & walks<br/>✅ Final inspections<br/>🧹 Final cleanup<br/>🤝 Project handover]
+    
+    %% Crew Management Flow
+    CREW_MANAGEMENT --> CREW_SETUP[👷 Crew Management Setup<br/>📊 Workforce requirements<br/>🏆 Skill assessments<br/>📅 Availability tracking<br/>💰 Labor budgets<br/>📋 Certification tracking]
+    CREW_SETUP --> CREW_ALLOCATION[👥 Crew Allocation<br/>📊 Task assignments<br/>🏆 Skill matching<br/>⏱️ Time scheduling<br/>📍 Location assignments<br/>👷 Team composition<br/>📋 Responsibility matrix]
+    CREW_ALLOCATION --> SHIFT_MANAGEMENT[⏰ Shift Management<br/>🌅 Day shift planning<br/>🌙 Night shift coordination<br/>⏰ Overtime scheduling<br/>🔄 Rotation planning<br/>📞 On-call assignments<br/>📅 Break scheduling]
+    SHIFT_MANAGEMENT --> ATTENDANCE_TRACKING[📋 Attendance Tracking<br/>⏰ Time clock systems<br/>📱 Mobile check-in<br/>🆔 Badge scanning<br/>📊 Hours validation<br/>💼 Payroll integration<br/>📈 Productivity metrics]
+    
+    ATTENDANCE_TRACKING --> PRODUCTIVITY_MONITOR[📊 Productivity Monitoring<br/>📈 Task completion rates<br/>⏱️ Time efficiency<br/>🏆 Quality metrics<br/>📊 Performance analytics<br/>💡 Improvement suggestions<br/>🎯 Goal tracking]
+    PRODUCTIVITY_MONITOR --> SKILL_DEVELOPMENT[🎓 Skill Development<br/>📚 Training programs<br/>🏆 Certification tracking<br/>💡 Mentorship programs<br/>📊 Performance reviews<br/>🎯 Career development<br/>📋 Competency assessments]
+    SKILL_DEVELOPMENT --> CREW_COMMUNICATION[📞 Crew Communication<br/>📱 Mobile messaging<br/>📋 Daily briefings<br/>🚨 Emergency alerts<br/>📊 Performance feedback<br/>💡 Suggestion systems<br/>🔄 Two-way communication]
+    
+    %% Safety Operations Flow
+    SAFETY_OPERATIONS --> SAFETY_SETUP[🦺 Safety Operations Setup<br/>📋 Safety protocols<br/>🚨 Emergency procedures<br/>🏆 Training requirements<br/>📊 Incident tracking<br/>📋 Compliance monitoring]
+    SAFETY_SETUP --> SAFETY_ORIENTATION[👷 Safety Orientation<br/>📚 New worker training<br/>🦺 PPE requirements<br/>🚨 Emergency procedures<br/>📋 Site-specific hazards<br/>✅ Competency testing<br/>📄 Documentation]
+    SAFETY_ORIENTATION --> HAZARD_ASSESSMENT[⚠️ Hazard Assessment<br/>🔍 Daily safety inspections<br/>⚠️ Risk identification<br/>📊 Hazard analysis<br/>💡 Mitigation strategies<br/>📋 Control measures<br/>🔄 Continuous monitoring]
+    HAZARD_ASSESSMENT --> PPE_MANAGEMENT[🦺 PPE Management<br/>👷 Equipment distribution<br/>📋 Condition monitoring<br/>🔄 Replacement schedules<br/>🏆 Compliance checks<br/>📊 Usage tracking<br/>💰 Cost management]
+    
+    PPE_MANAGEMENT --> SAFETY_INSPECTIONS[🔍 Safety Inspections<br/>📅 Scheduled inspections<br/>🦺 Equipment checks<br/>🚧 Work area audits<br/>📋 Compliance verification<br/>❌ Violation documentation<br/>🔄 Corrective actions]
+    SAFETY_INSPECTIONS --> INCIDENT_MGMT[🚨 Incident Management<br/>📞 Emergency response<br/>🏥 Medical coordination<br/>📋 Incident documentation<br/>🔍 Root cause analysis<br/>💡 Prevention measures<br/>📊 Reporting systems]
+    INCIDENT_MGMT --> SAFETY_TRAINING[🎓 Ongoing Safety Training<br/>📚 Regular refreshers<br/>🆕 New equipment training<br/>🚨 Emergency drills<br/>💡 Best practices sharing<br/>📊 Competency assessments<br/>🏆 Safety recognition]
+    SAFETY_TRAINING --> SAFETY_METRICS[📊 Safety Metrics<br/>📈 Incident rates<br/>🎯 Safety goals<br/>📊 Leading indicators<br/>📈 Trending analysis<br/>🏆 Performance benchmarks<br/>📋 Regulatory compliance]
+    
+    %% Quality Control Flow
+    QUALITY_CONTROL --> QC_SETUP[✅ Quality Control Setup<br/>📋 Quality standards<br/>🔍 Inspection protocols<br/>📊 Testing procedures<br/>📋 Acceptance criteria<br/>📄 Documentation requirements]
+    QC_SETUP --> INSPECTION_PLANNING[📅 Inspection Planning<br/>📋 Inspection schedules<br/>🔍 Checkpoint definitions<br/>👷 Inspector assignments<br/>🧪 Testing requirements<br/>📊 Documentation protocols<br/>📸 Photo requirements]
+    INSPECTION_PLANNING --> MATERIAL_INSPECTION[🧱 Material Inspections<br/>📦 Delivery inspections<br/>🔬 Quality testing<br/>📋 Certification verification<br/>📸 Documentation<br/>❌ Rejection procedures<br/>🔄 Approval processes]
+    MATERIAL_INSPECTION --> WORKMANSHIP_QC[🔨 Workmanship Quality Control<br/>🔍 Work inspections<br/>📐 Measurement verification<br/>🏆 Craft standards<br/>📋 Deficiency lists<br/>🔄 Correction procedures<br/>✅ Final approval]
+    
+    WORKMANSHIP_QC --> TESTING_COORDINATION[🧪 Testing Coordination<br/>🧪 Laboratory testing<br/>📊 Field testing<br/>🔬 Third-party testing<br/>📋 Test scheduling<br/>📄 Results management<br/>✅ Compliance verification]
+    TESTING_COORDINATION --> DEFICIENCY_MGMT[❌ Deficiency Management<br/>🔍 Issue identification<br/>📋 Deficiency tracking<br/>💡 Correction planning<br/>⏱️ Resolution timelines<br/>✅ Re-inspection<br/>📊 Closure verification]
+    DEFICIENCY_MGMT --> QC_DOCUMENTATION[📄 QC Documentation<br/>📋 Inspection reports<br/>🧪 Test results<br/>📸 Photo documentation<br/>✅ Compliance certificates<br/>📊 Quality metrics<br/>📁 Record archiving]
+    QC_DOCUMENTATION --> QC_REPORTING[📊 Quality Reporting<br/>📈 Quality metrics<br/>📊 Trend analysis<br/>🎯 Performance indicators<br/>💡 Improvement opportunities<br/>📋 Management reports<br/>🏆 Quality achievements]
+    
+    %% Logistics Management Flow
+    LOGISTICS_MGMT --> LOGISTICS_SETUP[📦 Logistics Setup<br/>🚚 Delivery coordination<br/>📦 Storage management<br/>🔄 Material flow<br/>🚧 Equipment logistics<br/>📍 Site layout optimization]
+    LOGISTICS_SETUP --> DELIVERY_MGMT[🚚 Delivery Management<br/>📅 Delivery scheduling<br/>🚛 Vehicle coordination<br/>📍 Site access management<br/>🏗️ Unloading coordination<br/>📋 Receiving procedures<br/>📊 Delivery tracking]
+    DELIVERY_MGMT --> MATERIAL_HANDLING[📦 Material Handling<br/>🏗️ Unloading operations<br/>📍 Storage allocation<br/>🔄 Material movement<br/>📋 Inventory updates<br/>🦺 Safety procedures<br/>📊 Damage prevention]
+    MATERIAL_HANDLING --> EQUIPMENT_LOGISTICS[🚧 Equipment Logistics<br/>🚚 Equipment delivery<br/>📍 Positioning coordination<br/>⛽ Fuel management<br/>🔧 Maintenance scheduling<br/>📋 Operator assignments<br/>📊 Utilization tracking]
+    
+    EQUIPMENT_LOGISTICS --> WASTE_MGMT[♻️ Waste Management<br/>🗑️ Waste collection<br/>♻️ Recycling coordination<br/>🚛 Disposal scheduling<br/>🌍 Environmental compliance<br/>📊 Waste tracking<br/>💰 Cost management]
+    WASTE_MGMT --> SITE_LOGISTICS[📍 Site Logistics<br/>🚗 Traffic management<br/>🚧 Access control<br/>📍 Storage optimization<br/>🔄 Workflow coordination<br/>🦺 Safety zones<br/>📊 Space utilization]
+    SITE_LOGISTICS --> SUPPLY_CHAIN[📦 Supply Chain Coordination<br/>📞 Supplier communication<br/>📅 Delivery coordination<br/>🚨 Emergency supplies<br/>💰 Cost optimization<br/>📊 Performance tracking<br/>🔄 Vendor management]
+    
+    %% Field Reporting Flow
+    FIELD_REPORTING --> REPORTING_SETUP[📊 Field Reporting Setup<br/>📋 Report templates<br/>⏱️ Reporting schedules<br/>👥 Stakeholder access<br/>📱 Mobile integration<br/>📊 Data collection methods]
+    REPORTING_SETUP --> DAILY_REPORTS[📅 Daily Field Reports<br/>✅ Work completed<br/>👷 Labor hours<br/>📦 Materials used<br/>🚧 Equipment status<br/>🌦️ Weather conditions<br/>⚠️ Issues & delays]
+    DAILY_REPORTS --> PROGRESS_PHOTOS[📸 Progress Photography<br/>📷 Scheduled photos<br/>📍 Location tracking<br/>📅 Time stamping<br/>📊 Progress comparison<br/>📁 Photo organization<br/>🔄 Automated uploads]
+    PROGRESS_PHOTOS --> FIELD_INSPECTIONS[🔍 Field Inspection Reports<br/>✅ Inspection results<br/>❌ Deficiencies found<br/>📋 Corrective actions<br/>📊 Quality metrics<br/>📸 Supporting photos<br/>✅ Sign-offs]
+    
+    FIELD_INSPECTIONS --> PRODUCTION_TRACKING[📊 Production Tracking<br/>📈 Quantity installed<br/>⏱️ Production rates<br/>📊 Efficiency metrics<br/>🎯 Target vs actual<br/>💡 Productivity insights<br/>🔮 Forecast updates]
+    PRODUCTION_TRACKING --> ISSUE_REPORTING[⚠️ Issue Reporting<br/>🔍 Problem identification<br/>📊 Impact assessment<br/>💡 Proposed solutions<br/>👥 Stakeholder alerts<br/>📋 Action tracking<br/>🔄 Resolution updates]
+    ISSUE_REPORTING --> WEATHER_REPORTING[🌦️ Weather Impact Reports<br/>🌡️ Weather conditions<br/>⏱️ Work delays<br/>🔄 Schedule adjustments<br/>🦺 Safety impacts<br/>💰 Cost implications<br/>📅 Recovery planning]
+    WEATHER_REPORTING --> AUTOMATED_REPORTS[🤖 Automated Reporting<br/>📊 Data aggregation<br/>📈 Trend analysis<br/>🚨 Alert generation<br/>📋 Report distribution<br/>📊 Dashboard updates<br/>🔄 Real-time sync]
+    
+    %% Agent Coordination Flow
+    AGENT_COORDINATION --> COORD_SETUP[🔗 Coordination Setup<br/>📊 Data sync protocols<br/>🔄 Update frequencies<br/>⚠️ Escalation procedures<br/>📋 Communication channels<br/>🔐 Security settings]
+    COORD_SETUP --> BUILDER_SYNC[📤 Builder Agent Sync<br/>📊 Progress updates<br/>💰 Cost actuals<br/>📅 Schedule status<br/>📦 Material consumption<br/>👷 Resource utilization<br/>⚠️ Issues & risks]
+    COORD_SETUP --> ARCHITECT_SYNC[📤 Architect Agent Sync<br/>🎨 Design clarifications<br/>📐 Field modifications<br/>🔄 Change requests<br/>📋 Shop drawings<br/>✅ Design compliance<br/>📸 As-built documentation]
+    COORD_SETUP --> DEVELOPER_SYNC[📤 Developer Agent Sync<br/>💰 Financial updates<br/>📈 ROI implications<br/>📅 Timeline impacts<br/>🏠 Market changes<br/>⚠️ Risk factors<br/>🎯 Goal alignment]
+    COORD_SETUP --> ZONING_SYNC[📤 Zoning Agent Sync<br/>📋 Permit compliance<br/>🏛️ Code adherence<br/>🔍 Inspection schedules<br/>📄 Violation reports<br/>🔄 Modification requests<br/>✅ Final approvals]
+    
+    BUILDER_SYNC --> SYNC_VALIDATION[✅ Synchronization Validation<br/>🔍 Data consistency<br/>📊 Conflict detection<br/>⚠️ Error identification<br/>🔄 Correction procedures<br/>📋 Audit trails<br/>✅ Confirmation protocols]
+    ARCHITECT_SYNC --> SYNC_VALIDATION
+    DEVELOPER_SYNC --> SYNC_VALIDATION
+    ZONING_SYNC --> SYNC_VALIDATION
+    
+    SYNC_VALIDATION --> CONFLICT_MGMT[⚠️ Conflict Management<br/>🔍 Conflict analysis<br/>💡 Resolution options<br/>👥 Stakeholder engagement<br/>✅ Decision protocols<br/>📋 Implementation tracking<br/>📄 Documentation]
+    CONFLICT_MGMT --> UPDATE_DISTRIBUTION[🔄 Update Distribution<br/>📤 Data propagation<br/>🔔 Notification systems<br/>📊 Impact analysis<br/>📅 Timeline updates<br/>💰 Cost adjustments<br/>📋 Change documentation]
+    UPDATE_DISTRIBUTION --> COORDINATION_REPORTING[📊 Coordination Reporting<br/>📈 Sync status<br/>⚠️ Outstanding issues<br/>📊 Performance metrics<br/>🔄 Update history<br/>📋 Action items<br/>🎯 Alignment status]
+    
+    %% Phase Integration Points
+    SITE_PREP_PHASE --> PHASE_COMPLETION[✅ Phase Completion Checks<br/>📋 Work verification<br/>✅ Quality approval<br/>🧹 Cleanup completion<br/>📊 Progress update<br/>📸 Photo documentation<br/>📋 Sign-off procedures]
+    FOUNDATION_PHASE --> PHASE_COMPLETION
+    FRAMING_PHASE --> PHASE_COMPLETION
+    MEP_PHASE --> PHASE_COMPLETION
+    FINISH_PHASE --> PHASE_COMPLETION
+    EXTERIOR_PHASE --> PHASE_COMPLETION
+    
+    PHASE_COMPLETION --> NEXT_PHASE_PREP[🔄 Next Phase Preparation<br/>📋 Handover procedures<br/>🧹 Work area preparation<br/>📦 Material staging<br/>👷 Crew transitions<br/>🦺 Safety briefings<br/>📅 Schedule updates]
+    NEXT_PHASE_PREP --> CONSTRUCTION_PHASES
+    
+    %% Advanced Features
+    AUTOMATED_REPORTS --> AI_ANALYTICS[🤖 AI Construction Analytics<br/>📊 Pattern recognition<br/>🔮 Predictive modeling<br/>💡 Optimization insights<br/>⚠️ Risk prediction<br/>📈 Performance forecasting<br/>💰 Cost optimization]
+    AI_ANALYTICS --> DRONE_INTEGRATION[🚁 Drone Integration<br/>📸 Aerial photography<br/>📊 Progress monitoring<br/>🔍 Site surveillance<br/>📐 Survey updates<br/>🦺 Safety monitoring<br/>📊 Volume calculations]
+    DRONE_INTEGRATION --> IOT_SENSORS[📡 IoT Sensor Integration<br/>🌡️ Environmental monitoring<br/>🔊 Noise monitoring<br/>💧 Moisture detection<br/>📊 Equipment tracking<br/>🚨 Security systems<br/>📈 Real-time data]
+    
+    %% Mobile Field Operations
+    DAILY_REPORTS --> MOBILE_INTERFACE[📱 Mobile Field Interface<br/>📋 Digital forms<br/>📸 Photo capture<br/>🗺️ GPS tracking<br/>📊 Real-time data<br/>🔄 Offline capability<br/>📤 Auto sync]
+    MOBILE_INTERFACE --> FIELD_APPS[📱 Specialized Field Apps<br/>📐 Measurement tools<br/>🔍 Quality checklists<br/>🦺 Safety apps<br/>📦 Inventory scanners<br/>⏰ Time tracking<br/>📞 Communication tools]
+    FIELD_APPS --> WEARABLE_TECH[⌚ Wearable Technology<br/>🦺 Safety monitoring<br/>👤 Location tracking<br/>💓 Health monitoring<br/>🚨 Emergency alerts<br/>📊 Activity tracking<br/>🔄 Hands-free operation]
+    
+    %% Project Completion Flow
+    EXTERIOR_PHASE --> FINAL_INSPECTIONS[🔍 Final Inspections<br/>🏛️ Code compliance<br/>✅ Quality verification<br/>🔧 System testing<br/>📄 Documentation review<br/>🧹 Final cleanup<br/>📸 Final photography]
+    FINAL_INSPECTIONS --> PUNCH_LIST[📋 Punch List Management<br/>🔍 Deficiency identification<br/>📊 Issue categorization<br/>👷 Work assignments<br/>⏱️ Completion tracking<br/>✅ Quality verification<br/>📸 Before/after photos]
+    PUNCH_LIST --> WARRANTY_SETUP[🛡️ Warranty Setup<br/>📄 Warranty documentation<br/>📅 Coverage periods<br/>📞 Contact information<br/>📋 Maintenance schedules<br/>🏆 Quality guarantees<br/>📁 Record keeping]
+    WARRANTY_SETUP --> PROJECT_HANDOVER[🤝 Project Handover<br/>📄 Documentation transfer<br/>🔑 Key handover<br/>🎓 Training sessions<br/>📋 Operating manuals<br/>📞 Contact lists<br/>✅ Final acceptance]
+    
+    %% Emergency Procedures
+    INCIDENT_MGMT --> EMERGENCY_CHECK{Critical Emergency?}
+    EMERGENCY_CHECK -->|Yes| EMERGENCY_RESPONSE[🚨 Emergency Response<br/>🚨 Emergency services<br/>🏥 Medical response<br/>👥 Evacuation procedures<br/>📞 Notification protocols<br/>🦺 Safety measures<br/>📋 Incident command]
+    EMERGENCY_CHECK -->|No| SAFETY_METRICS
+    EMERGENCY_RESPONSE --> EMERGENCY_RECOVERY[🔄 Emergency Recovery<br/>🔍 Damage assessment<br/>🛠️ Repair planning<br/>🦺 Safety verification<br/>🔄 Work resumption<br/>📋 Incident analysis<br/>📚 Learning integration]
+    EMERGENCY_RECOVERY --> CONSTRUCTION_PHASES
+    
+    %% Completion and Archive
+    PROJECT_HANDOVER --> PROJECT_CLOSEOUT[✅ Project Closeout<br/>📊 Final reporting<br/>💰 Final accounting<br/>📄 Document archiving<br/>📚 Lessons learned<br/>🏆 Performance review<br/>🎉 Project celebration]
+    PROJECT_CLOSEOUT --> KNOWLEDGE_CAPTURE[📚 Knowledge Capture<br/>💡 Best practices<br/>⚠️ Lessons learned<br/>📊 Performance data<br/>🔄 Process improvements<br/>📋 Template updates<br/>🏆 Success stories]
+    KNOWLEDGE_CAPTURE --> ARCHIVE_PROJECT[📁 Archive Project Data<br/>📄 Document storage<br/>📊 Data backup<br/>🔍 Search indexing<br/>📋 Compliance records<br/>🔐 Security protocols<br/>📚 Knowledge base]
+    
+    %% Return Paths
+    ARCHIVE_PROJECT --> CONSTRUCTION_MENU
+    
+    %% Error Handling
+    SYNC_VALIDATION --> SYNC_ERROR{Sync Error?}
+    SYNC_ERROR -->|Yes| ERROR_HANDLER[❌ Error Handler<br/>🔄 Retry mechanisms<br/>📝 Error logging<br/>🚨 Alert systems<br/>📞 Support escalation<br/>🔄 Fallback procedures<br/>📋 Manual override]
+    SYNC_ERROR -->|No| CONFLICT_MGMT
+    ERROR_HANDLER --> CONSTRUCTION_MENU
+    
+    %% Styling
+    classDef startEnd fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef error fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+    classDef success fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef sync fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+    classDef analysis fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+    classDef mobile fill:#e8eaf6,stroke:#283593,stroke-width:2px
+    classDef emergency fill:#fce4ec,stroke:#ad1457,stroke-width:2px
+    classDef phase fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+    classDef quality fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef safety fill:#ffebee,stroke:#c62828,stroke-width:2px
+    classDef logistics fill:#e0f2f1,stroke:#2e7d32,stroke-width:2px
+    classDef tech fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    
+    class START,PROJECT_CLOSEOUT startEnd
+    class RECEIVE_PLANS,CREW_SETUP,SAFETY_SETUP,QC_SETUP,LOGISTICS_SETUP,REPORTING_SETUP,COORD_SETUP process
+    class AUTH_CHECK,CONST_CHOICE,EMERGENCY_CHECK,SYNC_ERROR decision
+    class ERROR_HANDLER error
+    class ARCHIVE_PROJECT,KNOWLEDGE_CAPTURE,PROJECT_HANDOVER success
+    class BUILDER_SYNC,ARCHITECT_SYNC,DEVELOPER_SYNC,ZONING_SYNC,SYNC_VALIDATION sync
+    class AI_ANALYTICS,AUTOMATED_REPORTS,COORDINATION_REPORTING analysis
+    class MOBILE_INTERFACE,FIELD_APPS,WEARABLE_TECH mobile
+    class EMERGENCY_RESPONSE,EMERGENCY_RECOVERY emergency
+    class SITE_PREP_PHASE,FOUNDATION_PHASE,FRAMING_PHASE,MEP_PHASE,FINISH_PHASE,EXTERIOR_PHASE phase
+    class QC_DOCUMENTATION,QC_REPORTING,MATERIAL_INSPECTION,WORKMANSHIP_QC quality
+    class SAFETY_ORIENTATION,HAZARD_ASSESSMENT,PPE_MANAGEMENT,SAFETY_INSPECTIONS safety
+    class DELIVERY_MGMT,MATERIAL_HANDLING,EQUIPMENT_LOGISTICS,WASTE_MGMT logistics
+    class DRONE_INTEGRATION,IOT_SENSORS,WEARABLE_TECH tech
